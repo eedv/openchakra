@@ -11,7 +11,8 @@ type ErrorBoundaryState = {
 }
 
 type ErrorBoundaryProps = {
-  undo: () => void
+  undo: () => void;
+  children: React.ReactNode;
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
