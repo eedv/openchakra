@@ -17,6 +17,7 @@ import { generateComponentCode } from '../../utils/code'
 import useClipboard from '../../hooks/useClipboard'
 import { useInspectorUpdate } from '../../contexts/inspector-context'
 
+// eslint-disable-next-line react/display-name
 const CodeActionButton = memo(() => {
   const [isLoading, setIsLoading] = useState(false)
   const { onCopy, hasCopied } = useClipboard()
@@ -31,16 +32,16 @@ const CodeActionButton = memo(() => {
 
   return (
     <ActionButton
+      icon={hasCopied ? 'check' : GoCode}
       isLoading={isLoading}
       label="Copy code component"
-      variantColor={hasCopied ? 'green' : 'gray'}
       onClick={async () => {
         setIsLoading(true)
         const code = await generateComponentCode(parent, components)
         onCopy(code)
         setIsLoading(false)
       }}
-      icon={hasCopied ? 'check' : GoCode}
+      variantColor={hasCopied ? 'green' : 'gray'}
     />
   )
 })
@@ -67,70 +68,70 @@ const Inspector = () => {
     <>
       <Box bg="white">
         <Box
-          fontWeight="semibold"
-          fontSize="md"
-          color="yellow.900"
-          py={2}
-          px={2}
-          shadow="sm"
-          bg="yellow.100"
-          display="flex"
           alignItems="center"
+          bg="yellow.100"
+          color="yellow.900"
+          display="flex"
+          fontSize="md"
+          fontWeight="semibold"
           justifyContent="space-between"
+          px={2}
+          py={2}
+          shadow="sm"
         >
           {isRoot ? 'Document' : type}
         </Box>
         {!isRoot && (
           <Stack
+            align="center"
+            flexWrap="wrap"
             isInline
+            justify="flex-end"
+            px={2}
             py={2}
             spacing={4}
-            align="center"
             zIndex={99}
-            px={2}
-            flexWrap="wrap"
-            justify="flex-end"
           >
             <CodeActionButton />
             <ActionButton
+              icon="copy"
               label="Duplicate"
               onClick={() => dispatch.components.duplicate()}
-              icon="copy"
             />
             <ActionButton
-              label="Reset props"
               icon={IoMdRefresh}
+              label="Reset props"
               onClick={() => dispatch.components.resetProps(component.id)}
             />
             <ActionButton
-              label="Chakra UI Doc"
               as={Link}
+              icon={GoRepo}
+              label="Chakra UI Doc"
               onClick={() => {
                 window.open(
                   `https://chakra-ui.com/${docType.toLowerCase()}`,
                   '_blank',
                 )
               }}
-              icon={GoRepo}
             />
             <ActionButton
               bg="red.500"
+              icon={FiTrash2}
               label="Remove"
               onClick={() => dispatch.components.deleteComponent(component.id)}
-              icon={FiTrash2}
             />
           </Stack>
         )}
       </Box>
 
-      <Box pb={1} bg="white" px={3}>
+      <Box bg="white" pb={1} px={3}>
         <Panels component={component} isRoot={isRoot} />
       </Box>
 
       <StylesPanel
         isRoot={isRoot}
-        showChildren={componentHasChildren}
         parentIsRoot={parentIsRoot}
+        showChildren={componentHasChildren}
       />
     </>
   )

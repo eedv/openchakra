@@ -43,9 +43,6 @@
     "test": "react-scripts test --env=jsdom",
     "analyze": "BUNDLE_VISUALIZE=1 react-scriptss build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -68,6 +65,13 @@
     "@types/prettier": "^1.19.0",
     "@types/react-color": "^3.0.1",
     "@types/react-redux": "^7.1.7",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-config-react": "1.1.7",
+    "eslint-config-react-app": "5.2.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-react": "7.19.0",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",

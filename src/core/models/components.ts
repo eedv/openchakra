@@ -83,7 +83,7 @@ const components = createModel({
       }
 
       return produce(state, (draftState: ComponentsState) => {
-        let component = draftState.components[componentId]
+        const component = draftState.components[componentId]
 
         // Remove self
         if (component && component.parent) {

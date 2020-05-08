@@ -23,42 +23,45 @@ const CodePanel = () => {
 
   return (
     <Box
-      zIndex={40}
-      p={4}
-      fontSize="sm"
       backgroundColor="#011627"
-      overflow="auto"
-      position="absolute"
-      top={0}
       bottom={0}
+      fontSize="sm"
       left={0}
+      overflow="auto"
+      p={4}
+      position="absolute"
       right={0}
+      top={0}
+      zIndex={40}
     >
       <Button
-        onClick={onCopy}
-        size="sm"
-        position="absolute"
-        textTransform="uppercase"
-        variantColor="teal"
         fontSize="xs"
         height="24px"
-        top={4}
+        onClick={onCopy}
+        position="absolute"
         right="1.25em"
+        size="sm"
+        textTransform="uppercase"
+        top={4}
+        variantColor="teal"
       >
         {hasCopied ? 'copied' : 'copy'}
       </Button>
       <Highlight
         {...defaultProps}
-        theme={theme}
         code={code || '// Formatting code… please wait ✨'}
         language="jsx"
+        theme={theme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={style}>
             {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
+              <div key={`${line}-${i}`} {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
+                  <span
+                    key={`${token}-${i}`}
+                    {...getTokenProps({ token, key })}
+                  />
                 ))}
               </div>
             ))}
