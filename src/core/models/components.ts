@@ -1,6 +1,6 @@
 import { createModel } from '@rematch/core'
 import produce from 'immer'
-import { DEFAULT_PROPS } from '../../utils/defaultProps'
+import { DEFAULT_PROPS } from '../../designSystems/chakra/defaultProps'
 import templates, { TemplateType } from '../../templates'
 import { generateId } from '../../utils/generateId'
 import { duplicateComponent, deleteComponent } from '../../utils/recursive'
@@ -23,7 +23,7 @@ export const INITIAL_COMPONENTS: IComponents = {
   root: {
     id: DEFAULT_ID,
     parent: DEFAULT_ID,
-    type: 'Box' as ComponentType,
+    type: 'Button' as ComponentType,
     children: [],
     props: {},
   },

@@ -115,7 +115,7 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     children: 'Badge name',
   },
   Button: {
-    children: 'Button text',
+    children: 'Button default coso',
   },
   Divider: { borderColor: 'blackAlpha.500' },
   IconButton: {
