@@ -55,23 +55,23 @@ const ColorsControl = (props: ColorControlPropsType) => {
 
   const huesPicker = (
     <>
-      <Grid mb={2} templateColumns="repeat(5, 1fr)" gap={0}>
+      <Grid gap={0} mb={2} templateColumns="repeat(5, 1fr)">
         {Object.keys(themeColors).map(colorName => (
           <PseudoBox
-            border={colorName.includes('white') ? '1px solid lightgrey' : ''}
-            key={colorName}
             _hover={{ shadow: 'lg' }}
-            cursor="pointer"
             bg={`${colorName}.${props.enableHues ? hue : 500}`}
+            border={colorName.includes('white') ? '1px solid lightgrey' : ''}
+            cursor="pointer"
+            height="30px"
+            key={colorName}
+            mt={2}
             onClick={() =>
               setValue(
                 props.name,
                 props.enableHues ? `${colorName}.${hue}` : colorName,
               )
             }
-            mt={2}
             rounded="full"
-            height="30px"
             width="30px"
           />
         ))}
@@ -79,19 +79,19 @@ const ColorsControl = (props: ColorControlPropsType) => {
 
       {props.enableHues && (
         <Slider
+          max={900}
+          min={0}
           onChange={value => {
             value = value === 0 ? 50 : value
             setHue(value)
           }}
-          min={0}
-          max={900}
           step={100}
           value={hue}
         >
           <SliderTrack />
           <SliderFilledTrack />
           <SliderThumb size={8}>
-            <Box rounded="full" fontSize="xs">
+            <Box fontSize="xs" rounded="full">
               {hue}
             </Box>
           </SliderThumb>
@@ -105,11 +105,11 @@ const ColorsControl = (props: ColorControlPropsType) => {
       <Popover placement="bottom">
         <PopoverTrigger>
           <IconButton
-            mr={2}
-            shadow="md"
+            aria-label="Color"
             border={value ? 'none' : '2px solid grey'}
             isRound
-            aria-label="Color"
+            mr={2}
+            shadow="md"
             size="xs"
             {...propsIconButton}
           >
@@ -129,7 +129,7 @@ const ColorsControl = (props: ColorControlPropsType) => {
                   <TabPanel>{huesPicker}</TabPanel>
 
                   <TabPanel>
-                    <Box position="relative" height="150px">
+                    <Box height="150px" position="relative">
                       <ColorPicker
                         color={value}
                         onChange={(color: any) => {
@@ -148,11 +148,11 @@ const ColorsControl = (props: ColorControlPropsType) => {
         </PopoverContent>
       </Popover>
       <Input
-        width="100px"
-        size="sm"
         name={props.name}
         onChange={setValueFromEvent}
+        size="sm"
         value={value}
+        width="100px"
       />
     </FormControl>
   )

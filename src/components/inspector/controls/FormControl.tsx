@@ -20,26 +20,26 @@ const FormControl: React.FC<FormControlPropType> = ({
   hasColumn,
 }) => (
   <ChakraFormControl
-    mb={3}
+    alignItems="center"
     as={Grid}
     display="flex"
-    alignItems="center"
     justifyItems="center"
+    mb={3}
   >
     <FormLabel
-      p={0}
-      mr={2}
       color="gray.500"
-      lineHeight="1rem"
-      width={hasColumn ? '2.5rem' : '90px'}
       fontSize="xs"
       htmlFor={htmlFor}
+      lineHeight="1rem"
+      mr={2}
+      p={0}
+      width={hasColumn ? '2.5rem' : '90px'}
     >
       {label}
     </FormLabel>
     <Box
-      display="flex"
       alignItems="center"
+      display="flex"
       justifyItems="center"
       width={hasColumn ? '30px' : '130px'}
     >

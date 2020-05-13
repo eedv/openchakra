@@ -18,11 +18,11 @@ const IconControl: React.FC<IconControlProps> = ({ name, label }) => {
   const value = usePropsSelector(name)
 
   return (
-    <FormControl label={label} htmlFor={name}>
+    <FormControl htmlFor={name} label={label}>
       <InputSuggestion
-        value={value}
         handleChange={setValueFromEvent}
         name={name}
+        value={value}
       >
         {Object.keys(theme.icons)
           .filter(icon => icon.includes(value) || !value)

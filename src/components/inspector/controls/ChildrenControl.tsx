@@ -31,15 +31,15 @@ const ChildrenControl: React.FC = () => {
       <Input
         id="children"
         name="children"
-        size="sm"
-        value={children}
-        type="text"
-        onChange={setValueFromEvent}
-        ref={textInput}
-        onKeyUp={onKeyUp}
         onBlur={() => {
           dispatch.app.toggleInputText(false)
         }}
+        onChange={setValueFromEvent}
+        onKeyUp={onKeyUp}
+        ref={textInput}
+        size="sm"
+        type="text"
+        value={children}
       />
     </FormControl>
   )
