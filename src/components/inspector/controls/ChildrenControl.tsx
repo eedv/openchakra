@@ -7,7 +7,7 @@ import usePropsSelector from '../../../hooks/usePropsSelector'
 import { useSelector } from 'react-redux'
 import { getInputTextFocused } from '../../../core/selectors/app'
 
-const ChildrenControl: React.FC = () => {
+const ChildrenControl: React.FC<{ label?: string }> = ({ label = 'Text' }) => {
   const dispatch = useDispatch()
   const textInput = useRef<HTMLInputElement>(null)
   const focusInput = useSelector(getInputTextFocused)
@@ -27,7 +27,7 @@ const ChildrenControl: React.FC = () => {
   }, [focusInput])
 
   return (
-    <FormControl htmlFor="children" label="Text">
+    <FormControl htmlFor="children" label={label}>
       <Input
         id="children"
         name="children"

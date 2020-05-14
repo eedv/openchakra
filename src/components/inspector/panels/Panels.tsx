@@ -27,27 +27,51 @@ const Panels: React.FC<{ component: IComponent; isRoot: boolean }> = ({
           return (
             <SelectControl
               key={index}
-              label={props.label}
+              label={props && props.label}
               name={storeKey}
-              options={props.options || []}
+              options={props && props.options}
             />
           )
         case 'ColorsControl':
           return (
-            <ColorsControl key={index} label={props.label} name={storeKey} />
+            <ColorsControl
+              key={index}
+              label={props && props.label}
+              name={storeKey}
+            />
           )
         case 'IconControl':
-          return <IconControl key={index} label={props.label} name={storeKey} />
+          return (
+            <IconControl
+              key={index}
+              label={props && props.label}
+              name={storeKey}
+            />
+          )
         case 'SwitchControl':
           return (
-            <SwitchControl key={index} label={props.label} name={storeKey} />
+            <SwitchControl
+              key={index}
+              label={props && props.label}
+              name={storeKey}
+            />
           )
         case 'NumberControl':
           return (
-            <NumberControl key={index} label={props.label} name={storeKey} />
+            <NumberControl
+              key={index}
+              label={props && props.label}
+              name={storeKey}
+            />
           )
         case 'TextControl':
-          return <TextControl key={index} label={props.label} name={storeKey} />
+          return (
+            <TextControl
+              key={index}
+              label={props && props.label}
+              name={storeKey}
+            />
+          )
         default:
           return null
       }
