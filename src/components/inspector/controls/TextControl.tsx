@@ -8,18 +8,20 @@ type TextControlPropsType = {
   name: string
   label: string | ReactNode
   placeholder?: string
+  hasColumn?: boolean
 }
 
 const TextControl: React.FC<TextControlPropsType> = ({
   name,
   label,
   placeholder = '',
+  hasColumn = false,
 }) => {
   const { setValueFromEvent } = useForm()
   const value = usePropsSelector(name)
 
   return (
-    <FormControl htmlFor={name} label={label}>
+    <FormControl hasColumn htmlFor={name} label={label}>
       <Input
         autoComplete="off"
         id={name}
