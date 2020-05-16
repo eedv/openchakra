@@ -82,7 +82,7 @@ const useShortcuts = () => {
   }
 
   const onKonamiCode = () => {
-    dispatch.components.loadDemo('secretchakra')
+    //dispatch.components.loadDemo('secretchakra')
   }
 
   const handlers = {

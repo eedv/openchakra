@@ -6,7 +6,7 @@ import NumberControl from '../controls/NumberControl'
 import SelectControl from '../controls/SelectControl'
 import SwitchControl from '../controls/SwitchControl'
 import TextControl from '../controls/TextControl'
-import { panelDescriptors } from '../../../designSystems/chakra/panelsDescriptors'
+import { panelDescriptors } from '../../../designSystems/increase/panelsDescriptors'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 const Panels: React.FC<{ component: IComponent; isRoot: boolean }> = ({
@@ -67,6 +67,7 @@ const Panels: React.FC<{ component: IComponent; isRoot: boolean }> = ({
         case 'TextControl':
           return (
             <TextControl
+              hasColumn={false}
               key={index}
               label={props && props.label}
               name={storeKey}
@@ -80,7 +81,6 @@ const Panels: React.FC<{ component: IComponent; isRoot: boolean }> = ({
   if (isRoot) {
     return null
   }
-  console.log(Panel)
   return <>{Panel}</>
 }
 

@@ -1,4 +1,4 @@
-import { DEFAULT_PROPS } from '../../../designSystems/chakra/defaultProps'
+import { DEFAULT_PROPS } from '../../../designSystems/increase/defaultProps'
 import { generateId } from '../../../utils/generateId'
 
 type AddNode = {

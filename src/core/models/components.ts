@@ -1,7 +1,7 @@
 import { createModel } from '@rematch/core'
 import produce from 'immer'
-import { DEFAULT_PROPS } from '../../designSystems/chakra/defaultProps'
-import templates, { TemplateType } from '../../templates'
+import { DEFAULT_PROPS } from '../../designSystems/increase/defaultProps'
+// import templates, { TemplateType } from '../../templates'
 import { generateId } from '../../utils/generateId'
 import { duplicateComponent, deleteComponent } from '../../utils/recursive'
 import omit from 'lodash/omit'
@@ -42,13 +42,13 @@ const components = createModel({
         selectedId: DEFAULT_ID,
       }
     },
-    loadDemo(state: ComponentsState, type: TemplateType): ComponentsState {
-      return {
-        ...state,
-        selectedId: 'comp-root',
-        components: templates[type],
-      }
-    },
+    // loadDemo(state: ComponentsState, type: TemplateType): ComponentsState {
+    //   return {
+    //     ...state,
+    //     selectedId: 'comp-root',
+    //     components: templates[type],
+    //   }
+    // },
     resetProps(state: ComponentsState, componentId: string): ComponentsState {
       return produce(state, (draftState: ComponentsState) => {
         const component = draftState.components[componentId]

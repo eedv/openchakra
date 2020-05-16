@@ -26,7 +26,7 @@ const buildBlock = (component: IComponent, components: IComponents) => {
   let content = ''
 
   component.children.forEach((key: string) => {
-    let childComponent = components[key]
+    const childComponent = components[key]
     if (!childComponent) {
       console.error(`invalid component ${key}`)
     } else {
@@ -101,14 +101,11 @@ export const generateCode = async (components: IComponents) => {
   code = `import React from 'react';
 import {
   ThemeProvider,
-  CSSReset,
-  theme,
   ${imports.join(',')}
-} from "@chakra-ui/core";
+} from "@increase/typed-components";
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <CSSReset />
     ${code}
   </ThemeProvider>
 );

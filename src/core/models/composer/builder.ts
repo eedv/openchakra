@@ -1,4 +1,4 @@
-import Composer from './composer'
+//import Composer from './composer'
 
 type ComposedComponent = {
   components: IComponents
@@ -6,7 +6,7 @@ type ComposedComponent = {
   parent: string
 }
 
-export const buildAlert = (parent: string): ComposedComponent => {
+/* export const buildAlert = (parent: string): ComposedComponent => {
   const composer = new Composer()
 
   const nodeId = composer.addNode({
@@ -25,9 +25,9 @@ export const buildAlert = (parent: string): ComposedComponent => {
     root: nodeId,
     parent,
   }
-}
+} */
 
-export const buildBreadcrumb = (parent: string): ComposedComponent => {
+/* export const buildBreadcrumb = (parent: string): ComposedComponent => {
   const composer = new Composer()
 
   const nodeId = composer.addNode({ type: 'Breadcrumb', parent })
@@ -47,9 +47,9 @@ export const buildBreadcrumb = (parent: string): ComposedComponent => {
     root: nodeId,
     parent,
   }
-}
+} */
 
-export const buildFormControl = (parent: string): ComposedComponent => {
+/* export const buildFormControl = (parent: string): ComposedComponent => {
   const composer = new Composer()
 
   const nodeId = composer.addNode({ type: 'FormControl', parent })
@@ -66,9 +66,9 @@ export const buildFormControl = (parent: string): ComposedComponent => {
     root: nodeId,
     parent,
   }
-}
+} */
 
-export const buildAccordion = (parent: string): ComposedComponent => {
+/* export const buildAccordion = (parent: string): ComposedComponent => {
   const composer = new Composer('Accordion')
 
   const nodeId = composer.addNode({ type: 'Accordion', parent })
@@ -87,9 +87,9 @@ export const buildAccordion = (parent: string): ComposedComponent => {
     root: nodeId,
     parent,
   }
-}
+} */
 
-export const buildList = (parent: string): ComposedComponent => {
+/* export const buildList = (parent: string): ComposedComponent => {
   const composer = new Composer('List')
 
   const nodeId = composer.addNode({ type: 'List', parent })
@@ -102,9 +102,9 @@ export const buildList = (parent: string): ComposedComponent => {
     root: nodeId,
     parent,
   }
-}
+} */
 
-export const buildInputGroup = (parent: string): ComposedComponent => {
+/* export const buildInputGroup = (parent: string): ComposedComponent => {
   const composer = new Composer('Input')
 
   const nodeId = composer.addNode({ type: 'InputGroup', parent })
@@ -132,7 +132,7 @@ export const buildInputGroup = (parent: string): ComposedComponent => {
     root: nodeId,
     parent,
   }
-}
+} */
 
 type BuilderFn = (parent: string) => ComposedComponent
 
@@ -140,7 +140,7 @@ type ComposerBuilders = {
   [k: string]: BuilderFn
 }
 
-const builders: ComposerBuilders = {
+/* const builders: ComposerBuilders = {
   AlertMeta: buildAlert,
   FormControlMeta: buildFormControl,
   AccordionMeta: buildAccordion,
@@ -148,5 +148,5 @@ const builders: ComposerBuilders = {
   InputGroupMeta: buildInputGroup,
   BreadcrumbMeta: buildBreadcrumb,
 }
-
-export default builders
+ */
+export default {}

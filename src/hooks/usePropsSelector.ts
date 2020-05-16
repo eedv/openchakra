@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '../core/store'
-import { getDefaultFormProps } from '../designSystems/chakra/defaultProps'
+import { getDefaultFormProps } from '../designSystems/increase/defaultProps'
 import { useInspectorUpdate } from '../contexts/inspector-context'
 import { useEffect } from 'react'
 

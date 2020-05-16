@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Box, Text, Link } from '@chakra-ui/core'
+import { Box, Text } from '@chakra-ui/core'
 import ComponentPreview from './ComponentPreview'
 import { useDropComponent } from '../../hooks/useDropComponent'
 import SplitPane from 'react-split-pane'
@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux'
 import useDispatch from '../../hooks/useDispatch'
 import { getComponents } from '../../core/selectors/components'
 import { getShowLayout, getShowCode } from '../../core/selectors/app'
+import { ThemeProvider } from '@increase/typed-components'
+import '@increase/typed-components/dist/index.css'
 
 export const gridStyles = {
   backgroundImage:
@@ -46,22 +48,22 @@ const Editor: React.FC = () => {
     <Box
       p={2}
       {...editorBackgroundProps}
-      height="100%"
-      minWidth="10rem"
-      width="100%"
-      display={isEmpty ? 'flex' : 'block'}
-      justifyContent="center"
       alignItems="center"
-      overflow="auto"
-      ref={drop}
-      position="relative"
+      display={isEmpty ? 'flex' : 'block'}
       flexDirection="column"
+      height="100%"
+      justifyContent="center"
+      minWidth="10rem"
       onClick={onSelectBackground}
+      overflow="auto"
+      position="relative"
+      ref={drop}
+      width="100%"
     >
       {isEmpty && (
-        <Text maxWidth="md" color="gray.400" fontSize="xl" textAlign="center">
+        <Text color="gray.400" fontSize="xl" maxWidth="md" textAlign="center">
           Drag some component to start coding without code! Or load{' '}
-          <Link
+          {/* <Link
             color="gray.500"
             onClick={(e: React.MouseEvent) => {
               e.stopPropagation()
@@ -70,14 +72,15 @@ const Editor: React.FC = () => {
             textDecoration="underline"
           >
             the onboarding components
-          </Link>
+          </Link> */}
           .
         </Text>
       )}
-
-      {components.root.children.map((name: string) => (
-        <ComponentPreview key={name} componentName={name} />
-      ))}
+      <ThemeProvider>
+        {components.root.children.map((name: string) => (
+          <ComponentPreview componentName={name} key={name} />
+        ))}
+      </ThemeProvider>
     </Box>
   )
 
@@ -87,7 +90,6 @@ const Editor: React.FC = () => {
 
   return (
     <SplitPane
-      style={{ overflow: 'auto' }}
       defaultSize="50%"
       resizerStyle={{
         border: '3px solid rgba(1, 22, 39, 0.21)',
@@ -95,6 +97,7 @@ const Editor: React.FC = () => {
         cursor: 'row-resize',
       }}
       split="horizontal"
+      style={{ overflow: 'auto' }}
     >
       {Playground}
       <CodePanel />

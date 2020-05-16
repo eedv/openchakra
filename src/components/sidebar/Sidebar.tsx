@@ -9,7 +9,10 @@ import {
   IconButton,
 } from '@chakra-ui/core'
 import DragItem from './DragItem'
-import { MenuItemType as MenuItem, menuItems } from '../../designSystems/chakra/MenuItems'
+import {
+  MenuItemType as MenuItem,
+  menuItems,
+} from '../../designSystems/increase/MenuItems'
 
 const Menu = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -17,41 +20,41 @@ const Menu = () => {
   return (
     <DarkMode>
       <Box
-        maxH="calc(100vh - 3rem)"
-        overflowY="auto"
-        overflowX="visible"
-        shadow="xl"
-        flex="0 0 14rem"
-        p={5}
-        m={0}
         as="menu"
         backgroundColor="#2e3748"
+        flex="0 0 14rem"
+        m={0}
+        maxH="calc(100vh - 3rem)"
+        overflowX="visible"
+        overflowY="auto"
+        p={5}
+        shadow="xl"
         width="15rem"
       >
-        <InputGroup size="sm" mb={4}>
+        <InputGroup mb={4} size="sm">
           <InputRightElement>
             {searchTerm ? (
               <IconButton
-                color="gray.300"
                 aria-label="clear"
+                color="gray.300"
                 icon="close"
-                size="xs"
                 onClick={() => setSearchTerm('')}
+                size="xs"
               >
                 x
               </IconButton>
             ) : (
-              <Icon name="search" color="gray.300" />
+              <Icon color="gray.300" name="search" />
             )}
           </InputRightElement>
           )}
           <Input
-            value={searchTerm}
             color="gray.300"
-            placeholder="Search component…"
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setSearchTerm(event.target.value)
             }
+            placeholder="Search component…"
+            value={searchTerm}
           />
         </InputGroup>
 
@@ -63,12 +66,12 @@ const Menu = () => {
             if (children) {
               const elements = Object.keys(children).map(childName => (
                 <DragItem
+                  id={childName as any}
                   isChild
                   key={childName}
                   label={childName}
-                  type={childName as any}
-                  id={childName as any}
                   rootParentType={menuItems[name]?.rootParentType || name}
+                  type={childName as any}
                 >
                   {childName}
                 </DragItem>
@@ -76,13 +79,13 @@ const Menu = () => {
 
               return [
                 <DragItem
+                  id={`${name}Meta` as any}
                   isMeta
-                  soon={soon}
                   key={`${name}Meta`}
                   label={name}
-                  type={`${name}Meta` as any}
-                  id={`${name}Meta` as any}
                   rootParentType={menuItems[name]?.rootParentType || name}
+                  soon={soon}
+                  type={`${name}Meta` as any}
                 >
                   {name}
                 </DragItem>,
@@ -92,12 +95,12 @@ const Menu = () => {
 
             return (
               <DragItem
-                soon={soon}
+                id={name as any}
                 key={name}
                 label={name}
-                type={name as any}
-                id={name as any}
                 rootParentType={menuItems[name]?.rootParentType || name}
+                soon={soon}
+                type={name as any}
               >
                 {name}
               </DragItem>

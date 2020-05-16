@@ -15,7 +15,7 @@ const TextControl: React.FC<TextControlPropsType> = ({
   name,
   label,
   placeholder = '',
-  hasColumn = false,
+  hasColumn,
 }) => {
   const { setValueFromEvent } = useForm()
   const value = usePropsSelector(name)
@@ -32,7 +32,7 @@ const TextControl: React.FC<TextControlPropsType> = ({
         size="sm"
         type="text"
         value={value || ''}
-        width="100%"
+        width={hasColumn ? '3rem' : '100%'}
       />
     </FormControl>
   )
