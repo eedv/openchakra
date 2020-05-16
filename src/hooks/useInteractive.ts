@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, MouseEvent } from 'react'
 import { useSelector } from 'react-redux'
 import useDispatch from './useDispatch'
@@ -8,9 +9,17 @@ import {
 } from '../core/selectors/components'
 import { getShowLayout, getFocusedComponent } from '../core/selectors/app'
 
+type wrapperProps = {
+  ref: any
+  className?: string
+  onMouseOver: (event: MouseEvent) => void
+  onMouseOut: (event: MouseEvent) => void
+  onClick: (event: MouseEvent) => void
+  onDoubleClick: (event: MouseEvent) => void
+}
 export const useInteractive = (
   component: IComponent,
-  enableVisualHelper: boolean = false,
+  enableVisualHelper = false,
 ) => {
   const dispatch = useDispatch()
   const showLayout = useSelector(getShowLayout)
@@ -23,8 +32,8 @@ export const useInteractive = (
   })
 
   const ref = useRef<HTMLDivElement>(null)
-  let props = {
-    ...component.props,
+  const dragableWrapperProps: wrapperProps = {
+    ref: drag(ref),
     onMouseOver: (event: MouseEvent) => {
       event.stopPropagation()
       dispatch.components.hover(component.id)
@@ -46,20 +55,16 @@ export const useInteractive = (
     },
   }
 
+  // TODO: add classnames to ComponentWrapper as export
   if (showLayout && enableVisualHelper) {
-    props = {
-      ...props,
-      border: `1px dashed #718096`,
-      padding: props.p || props.padding ? props.p || props.padding : 4,
-    }
+    dragableWrapperProps.className = `${dragableWrapperProps.className ||
+      ''} component-selected`
   }
 
   if (isHovered || isComponentSelected) {
-    props = {
-      ...props,
-      boxShadow: `${focusInput ? '#ffc4c7' : '#4FD1C5'} 0px 0px 0px 2px inset`,
-    }
+    dragableWrapperProps.className = `${dragableWrapperProps.className ||
+      ''} component-hovered`
   }
 
-  return { props, ref: drag(ref), drag }
+  return { dragableWrapperProps, drag }
 }
