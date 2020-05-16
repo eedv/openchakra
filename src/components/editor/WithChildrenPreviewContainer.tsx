@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FunctionComponent, ComponentClass } from 'react'
 import { useInteractive } from '../../hooks/useInteractive'
 import { useDropComponent } from '../../hooks/useDropComponent'
 import ComponentPreview from './ComponentPreview'
-import { Box } from '@chakra-ui/core'
+import { ComponentWrapper } from './ComponentWrapper'
 
 const WithChildrenPreviewContainer: React.FC<{
   component: IComponent
@@ -17,38 +18,25 @@ const WithChildrenPreviewContainer: React.FC<{
   ...forwardedProps
 }) => {
   const { drop, isOver } = useDropComponent(component.id)
-  const { props, ref } = useInteractive(component, enableVisualHelper)
-  const propsElement = { ...props, ...forwardedProps, pos: 'relative' }
+  const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
 
-  if (!isBoxWrapped) {
-    propsElement.ref = drop(ref)
-  }
-
-  if (isOver) {
-    propsElement.bg = 'teal.50'
-  }
+  dragableWrapperProps.className = `${dragableWrapperProps.className || ''} ${
+    !component.children.length ? 'container-component-style' : ''
+  } ${isOver ? 'component-is-over' : ''}`
 
   const children = React.createElement(
     type,
-    propsElement,
+    forwardedProps,
     component.children.map((key: string) => (
-      <ComponentPreview key={key} componentName={key} />
+      <ComponentPreview componentName={key} key={key} />
     )),
   )
 
-  if (isBoxWrapped) {
-    let boxProps: any = {
-      display: 'inline',
-    }
+  dragableWrapperProps.ref = drop(dragableWrapperProps.ref)
 
-    return (
-      <Box {...boxProps} ref={drop(ref)}>
-        {children}
-      </Box>
-    )
-  }
-
-  return children
+  return (
+    <ComponentWrapper {...dragableWrapperProps}>{children}</ComponentWrapper>
+  )
 }
 
 export default WithChildrenPreviewContainer

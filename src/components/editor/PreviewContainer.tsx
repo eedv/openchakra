@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FunctionComponent, ComponentClass } from 'react'
 import { useInteractive } from '../../hooks/useInteractive'
-import { Box } from '@chakra-ui/core'
+import { ComponentWrapper } from './ComponentWrapper'
 
 const PreviewContainer: React.FC<{
   component: IComponent
@@ -14,25 +15,16 @@ const PreviewContainer: React.FC<{
   isBoxWrapped,
   ...forwardedProps
 }) => {
-  const { props, ref } = useInteractive(component, enableVisualHelper)
-
+  const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
+  console.log(dragableWrapperProps)
   const children = React.createElement(type, {
-    ...props,
+    ...component.props,
     ...forwardedProps,
-    ref,
   })
 
-  if (isBoxWrapped) {
-    let boxProps: any = {}
-
-    return (
-      <Box {...boxProps} ref={ref}>
-        {children}
-      </Box>
-    )
-  }
-
-  return children
+  return (
+    <ComponentWrapper {...dragableWrapperProps}>{children}</ComponentWrapper>
+  )
 }
 
 export default PreviewContainer
