@@ -14,6 +14,8 @@ export type panelDescriptor = {
     controls: control[]
   } | null
 }
+
+const SizeOptions = ['normal', 'small']
 export const panelDescriptors: panelDescriptor = {
   Button: {
     controls: [
@@ -26,10 +28,10 @@ export const panelDescriptors: panelDescriptor = {
       },
       {
         type: 'SelectControl',
-        storeKey: 'as',
+        storeKey: 'buttonType',
         props: {
-          label: 'Render as',
-          options: ['Button', 'a'],
+          label: 'Select Variant',
+          options: ['primary', 'invisible', 'outline', 'alert'],
         },
       },
       {
@@ -37,15 +39,15 @@ export const panelDescriptors: panelDescriptor = {
         storeKey: 'size',
         props: {
           label: 'Size',
-          options: ['normal', 'small'],
+          options: SizeOptions,
         },
       },
       {
         type: 'SelectControl',
-        storeKey: 'buttonType',
+        storeKey: 'as',
         props: {
-          label: 'Select Variant',
-          options: ['primary', 'invisible', 'outline', 'alert'],
+          label: 'Render as',
+          options: ['Button', 'a'],
         },
       },
     ],
@@ -84,7 +86,7 @@ export const panelDescriptors: panelDescriptor = {
         storeKey: 'size',
         props: {
           label: 'Size',
-          options: ['normal', 'small'],
+          options: SizeOptions,
         },
       },
     ],

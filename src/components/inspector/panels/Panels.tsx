@@ -67,7 +67,6 @@ const Panels: React.FC<{ component: IComponent; isRoot: boolean }> = ({
         case 'TextControl':
           return (
             <TextControl
-              hasColumn={false}
               key={index}
               label={props && props.label}
               name={storeKey}
