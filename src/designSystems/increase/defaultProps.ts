@@ -46,7 +46,7 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   },
   Currency: {
     value: 10,
-    currency: '$',
+    currency: 'ARS',
   },
   H1: {
     children: 'Heading title',
@@ -68,6 +68,7 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   },
   InlineText: {
     children: 'Heading title',
+    inline: true,
   },
   CellText: {
     children: 'Heading title',
@@ -89,9 +90,15 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     checked: false,
   },
   Grid: {},
-  InputText: {},
-  InputNumber: {},
-  InputSearch: {},
+  InputText: {
+    label: 'InputText',
+  },
+  InputNumber: {
+    label: 'InputNumber',
+  },
+  InputSearch: {
+    label: 'InputSearch',
+  },
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {

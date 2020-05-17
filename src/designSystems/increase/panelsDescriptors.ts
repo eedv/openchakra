@@ -15,7 +15,14 @@ export type panelDescriptor = {
   } | null
 }
 
-const SizeOptions = ['normal', 'small']
+const SizeControl: control = {
+  type: 'SelectControl',
+  storeKey: 'size',
+  props: {
+    label: 'Size',
+    options: ['normal', 'small'],
+  },
+}
 export const panelDescriptors: panelDescriptor = {
   Button: {
     controls: [
@@ -34,14 +41,7 @@ export const panelDescriptors: panelDescriptor = {
           options: ['primary', 'invisible', 'outline', 'alert'],
         },
       },
-      {
-        type: 'SelectControl',
-        storeKey: 'size',
-        props: {
-          label: 'Size',
-          options: SizeOptions,
-        },
-      },
+      SizeControl,
       {
         type: 'SelectControl',
         storeKey: 'as',
@@ -81,50 +81,44 @@ export const panelDescriptors: panelDescriptor = {
           label: 'Label',
         },
       },
-      {
-        type: 'SelectControl',
-        storeKey: 'size',
-        props: {
-          label: 'Size',
-          options: SizeOptions,
-        },
-      },
+      SizeControl,
     ],
   },
   Currency: {
     controls: [
       {
-        type: 'TextControl',
-        storeKey: 'separator',
+        type: 'NumberControl',
+        storeKey: 'value',
         props: {
-          label: 'Separator',
+          label: 'Value',
         },
       },
       {
-        type: 'TextControl',
-        storeKey: 'spacing',
+        type: 'SelectControl',
+        storeKey: 'currency',
         props: {
-          label: 'Spacing',
+          label: 'Currency',
+          options: ['ARS', 'USD'],
         },
       },
       {
-        type: 'SwitchControl',
-        storeKey: 'addSeparator',
+        type: 'SelectControl',
+        storeKey: 'language',
         props: {
-          label: 'With separator',
+          label: 'Local',
+          options: ['es-AR', 'es-US', 'en-US'],
         },
       },
     ],
   },
   Checkbox: {
     controls: [
+      SizeControl,
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'SwitchControl',
+        storeKey: 'labelHidden',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Hide Label',
         },
       },
     ],
@@ -132,12 +126,10 @@ export const panelDescriptors: panelDescriptor = {
   Spinner: {
     controls: [
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'NumberControl',
+        storeKey: 'size',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Size',
         },
       },
     ],
@@ -145,12 +137,10 @@ export const panelDescriptors: panelDescriptor = {
   Tag: {
     controls: [
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'TextControl',
+        storeKey: 'colors',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Colors object',
         },
       },
     ],
@@ -164,6 +154,14 @@ export const panelDescriptors: panelDescriptor = {
           label: 'Label',
         },
       },
+      {
+        type: 'TextControl',
+        storeKey: 'placeholder',
+        props: {
+          label: 'Placeholder',
+        },
+      },
+      SizeControl,
     ],
   },
   InputNumber: {
