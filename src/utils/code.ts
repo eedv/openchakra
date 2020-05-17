@@ -50,6 +50,8 @@ const buildBlock = (component: IComponent, components: IComponents) => {
             !isNaN(propsValue)
           ) {
             operand = `={${propsValue}}`
+          } else if (typeof propsValue === 'object') {
+            operand = `={${JSON.stringify(propsValue)}}`
           }
 
           propsContent += `${propName}${operand} `

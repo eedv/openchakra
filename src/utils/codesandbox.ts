@@ -60,9 +60,9 @@ ReactDOM.render(<App />, rootElement);
     "react-transition-group": "^4.4.1",
     "reactjs-popup": "^1.5.0",
     "styled-components": "^5.1.0",
-    "react-remove-scroll-bar": "^2.1.0"
+    "react-remove-scroll-bar": "^2.1.0",
     "react-calendar": "^3.0.1",
-    "date-fns": "^2.13.0",
+    "date-fns": "^2.13.0"
   },
   "devDependencies": {
     "typescript": "3.3.3"
