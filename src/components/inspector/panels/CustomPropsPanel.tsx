@@ -37,9 +37,23 @@ const CustomPropsPanel = () => {
   }
 
   const activeProps = activePropsRef || []
+  console.log('activeProps', activeProps)
   const customProps = Object.keys(props).filter(
     propsName => !activeProps.includes(propsName),
   )
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getPropValue = (propvalue: any) => {
+    return typeof propvalue === 'object' ? JSON.stringify(propvalue) : propvalue
+  }
+
+  const parseIfJSON = (value: string) => {
+    try {
+      return JSON.parse(value)
+    } catch (e) {
+      return value
+    }
+  }
 
   return (
     <>
@@ -50,7 +64,7 @@ const CustomPropsPanel = () => {
           const [name, value] = quickProps.split(SEPARATOR)
 
           if (name && value) {
-            setValue(name, value)
+            setValue(name, parseIfJSON(value))
             setQuickProps('')
             setError(false)
           } else {
@@ -59,54 +73,54 @@ const CustomPropsPanel = () => {
         }}
       >
         <InputGroup mb={3} size="sm">
-          <InputRightElement
-            children={<Box as={IoIosFlash} color="gray.300" />}
-          />
+          <InputRightElement>
+            <Box as={IoIosFlash} color="gray.300" />
+          </InputRightElement>
           <Input
-            ref={inputRef}
             isInvalid={hasError}
-            value={quickProps}
-            placeholder={`props${SEPARATOR}value`}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setQuickProps(event.target.value)
             }
+            placeholder={`props${SEPARATOR}value`}
+            ref={inputRef}
+            value={quickProps}
           />
         </InputGroup>
       </form>
 
       {customProps.map((propsName, i) => (
         <Flex
-          key={propsName}
           alignItems="center"
-          px={2}
           bg={i % 2 === 0 ? 'white' : 'gray.50'}
           fontSize="xs"
           justifyContent="space-between"
+          key={propsName}
+          px={2}
         >
-          <SimpleGrid width="100%" columns={2} spacing={1}>
+          <SimpleGrid columns={2} spacing={1} width="100%">
             <Box fontWeight="bold">{propsName}</Box>
-            <Box>{props[propsName]}</Box>
+            <Box>{getPropValue(props[propsName])}</Box>
           </SimpleGrid>
 
-          <ButtonGroup display="flex" size="xs" isAttached>
+          <ButtonGroup display="flex" isAttached size="xs">
             <IconButton
+              aria-label="edit"
+              icon="edit"
               onClick={() => {
-                setQuickProps(`${propsName}=`)
+                setQuickProps(`${propsName}=${getPropValue(props[propsName])}`)
                 if (inputRef.current) {
                   inputRef.current.focus()
                 }
               }}
-              variant="ghost"
               size="xs"
-              aria-label="edit"
-              icon="edit"
+              variant="ghost"
             />
             <IconButton
-              onClick={() => onDelete(propsName)}
-              variant="ghost"
-              size="xs"
               aria-label="delete"
               icon="small-close"
+              onClick={() => onDelete(propsName)}
+              size="xs"
+              variant="ghost"
             />
           </ButtonGroup>
         </Flex>
