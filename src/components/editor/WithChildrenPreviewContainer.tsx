@@ -26,7 +26,10 @@ const WithChildrenPreviewContainer: React.FC<{
 
   const children = React.createElement(
     type,
-    forwardedProps,
+    {
+      ...component.props,
+      ...forwardedProps,
+    },
     component.children.map((key: string) => (
       <ComponentPreview componentName={key} key={key} />
     )),
