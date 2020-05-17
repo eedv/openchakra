@@ -17,6 +17,7 @@ const formatCode = async (code: string) => {
       semi: false,
       singleQuote: true,
     })
+    // eslint-disable-next-line no-empty
   } catch (e) {}
 
   return formattedCode
@@ -105,7 +106,7 @@ import {
 } from "@increase/typed-components";
 
 const App = () => (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider>
     ${code}
   </ThemeProvider>
 );

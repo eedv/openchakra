@@ -1,9 +1,9 @@
-import { getParameters } from "codesandbox/lib/api/define";
+import { getParameters } from 'codesandbox/lib/api/define'
 
 export const buildParameters = (code: string): string => {
   return getParameters({
     files: {
-      "public/index.html": {
+      'public/index.html': {
         content: `<!DOCTYPE html>
 <html lang="en">
 
@@ -24,9 +24,9 @@ export const buildParameters = (code: string): string => {
 </body>
 
 </html>`,
-        isBinary: false
+        isBinary: false,
       },
-      "index.js": {
+      'index.js': {
         content: `import React from "react";
 import ReactDOM from "react-dom";
 
@@ -35,13 +35,13 @@ import App from "./App";
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 `,
-        isBinary: false
+        isBinary: false,
       },
-      "App.js": {
+      'App.js': {
         content: code,
-        isBinary: false
+        isBinary: false,
       },
-      "package.json": {
+      'package.json': {
         content: `{
   "name": "react",
   "version": "1.0.0",
@@ -49,13 +49,20 @@ ReactDOM.render(<App />, rootElement);
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "@chakra-ui/core": "0.5.2",
+    "@increase/typed-components": "^2.3.0",
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
     "emotion-theming": "10.0.27",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-split-pane": "^0.1.89",
+    "react-transition-group": "^4.4.1",
+    "reactjs-popup": "^1.5.0",
+    "styled-components": "^5.1.0",
+    "react-remove-scroll-bar": "^2.1.0"
+    "react-calendar": "^3.0.1",
+    "date-fns": "^2.13.0",
   },
   "devDependencies": {
     "typescript": "3.3.3"
@@ -73,8 +80,8 @@ ReactDOM.render(<App />, rootElement);
     "not op_mini all"
   ]
 }`,
-        isBinary: false
-      }
-    }
-  });
-};
+        isBinary: false,
+      },
+    },
+  })
+}
