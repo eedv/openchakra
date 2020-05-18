@@ -1,14 +1,9 @@
 import React, { memo } from 'react'
-import { SimpleGrid, Select } from '@chakra-ui/core'
-import FormControl from '../../controls/FormControl'
-import usePropsSelector from '../../../../hooks/usePropsSelector'
-import { useForm } from '../../../../hooks/useForm'
+import { SimpleGrid } from '@chakra-ui/core'
 import TextControl from '../../controls/TextControl'
+import SelectControl from '../../controls/SelectControl'
 
 const DimensionPanel = () => {
-  const { setValueFromEvent } = useForm()
-  const overflow = usePropsSelector('overflow')
-
   return (
     <>
       <SimpleGrid columns={2} spacing={1}>
@@ -24,18 +19,11 @@ const DimensionPanel = () => {
         <TextControl hasColumn label="Max H" name="maxHeight" />
       </SimpleGrid>
 
-      <FormControl label="Overflow">
-        <Select
-          name="overflow"
-          onChange={setValueFromEvent}
-          size="sm"
-          value={overflow || ''}
-        >
-          <option>visible</option>
-          <option>hidden</option>
-          <option>scroll</option>
-        </Select>
-      </FormControl>
+      <SelectControl
+        label="Overflow"
+        name="overflow"
+        options={['visible', 'hidden', 'scroll']}
+      />
     </>
   )
 }

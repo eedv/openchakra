@@ -3,7 +3,8 @@ import copyToClipboard from 'copy-to-clipboard'
 
 const useClipboard = () => {
   const [hasCopied, setHasCopied] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const timeoutRef = useRef<any | null>(null)
 
   useEffect(() => {
     return () => {

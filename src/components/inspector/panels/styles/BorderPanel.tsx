@@ -4,8 +4,8 @@ import TextControl from '../../controls/TextControl'
 const BorderPanel = () => {
   return (
     <>
-      <TextControl name="border" label="Border" />
-      <TextControl name="borderRadius" label="Border radius" />
+      <TextControl label="Border" name="border" />
+      <TextControl label="Border radius" name="borderRadius" />
     </>
   )
 }

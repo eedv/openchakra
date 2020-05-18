@@ -18,18 +18,18 @@ type PaddingPanelPropsType = {
 
 const ATTRIBUTES = {
   margin: {
-    all: 'm',
-    left: 'ml',
-    right: 'mr',
-    bottom: 'mb',
-    top: 'mt',
+    all: 'margin',
+    left: 'marginLeft',
+    right: 'marginRight',
+    bottom: 'marginBottom',
+    top: 'mmarginTop',
   },
   padding: {
-    all: 'p',
-    left: 'pl',
-    right: 'pr',
-    bottom: 'pb',
-    top: 'pt',
+    all: 'padding',
+    left: 'paddingLeft',
+    right: 'paddingRight',
+    bottom: 'paddingBottom',
+    top: 'paddingTop',
   },
 }
 
@@ -52,12 +52,12 @@ const PaddingPanel = ({ type }: PaddingPanelPropsType) => {
         <InputGroup size="sm">
           <Input
             mb={1}
+            name={ATTRIBUTES[type].all}
+            onChange={setValueFromEvent}
             placeholder="All"
             size="sm"
             type="text"
-            name={ATTRIBUTES[type].all}
             value={all || ''}
-            onChange={setValueFromEvent}
           />
         </InputGroup>
 
@@ -65,66 +65,66 @@ const PaddingPanel = ({ type }: PaddingPanelPropsType) => {
           <InputGroup size="sm">
             <InputLeftElement
               children={
-                <Icon fontSize="md" name="arrow-back" color="gray.300" />
+                <Icon color="gray.300" fontSize="md" name="arrow-back" />
               }
             />
             <Input
+              autoComplete="off"
+              name={ATTRIBUTES[type].left}
+              onChange={setValueFromEvent}
               placeholder="left"
               size="sm"
               type="text"
-              name={ATTRIBUTES[type].left}
               value={left || ''}
-              onChange={setValueFromEvent}
-              autoComplete="off"
             />
           </InputGroup>
 
           <InputGroup size="sm">
             <InputLeftElement
               children={
-                <Icon fontSize="md" name="arrow-forward" color="gray.300" />
+                <Icon color="gray.300" fontSize="md" name="arrow-forward" />
               }
             />
             <Input
+              autoComplete="off"
+              name={ATTRIBUTES[type].right}
+              onChange={setValueFromEvent}
               placeholder="right"
               size="sm"
               type="text"
               value={right || ''}
-              name={ATTRIBUTES[type].right}
-              onChange={setValueFromEvent}
-              autoComplete="off"
             />
           </InputGroup>
 
           <InputGroup size="sm">
             <InputLeftElement
-              children={<Icon fontSize="md" name="arrow-up" color="gray.300" />}
+              children={<Icon color="gray.300" fontSize="md" name="arrow-up" />}
             />
             <Input
+              autoComplete="off"
+              name={ATTRIBUTES[type].top}
+              onChange={setValueFromEvent}
               placeholder="top"
               size="sm"
               type="text"
               value={top || ''}
-              name={ATTRIBUTES[type].top}
-              onChange={setValueFromEvent}
-              autoComplete="off"
             />
           </InputGroup>
 
           <InputGroup size="sm">
             <InputLeftElement
               children={
-                <Icon fontSize="md" name="chevron-down" color="gray.300" />
+                <Icon color="gray.300" fontSize="md" name="chevron-down" />
               }
             />
             <Input
+              autoComplete="off"
+              name={ATTRIBUTES[type].bottom}
+              onChange={setValueFromEvent}
               placeholder="bottom"
               size="sm"
               type="text"
               value={bottom || ''}
-              name={ATTRIBUTES[type].bottom}
-              onChange={setValueFromEvent}
-              autoComplete="off"
             />
           </InputGroup>
         </SimpleGrid>
