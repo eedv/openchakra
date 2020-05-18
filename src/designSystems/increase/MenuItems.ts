@@ -30,4 +30,5 @@ export const menuItems: MenuItemsType = {
   InlineText: {},
   CellText: {},
   Caption: {},
+  Div: {},
 }

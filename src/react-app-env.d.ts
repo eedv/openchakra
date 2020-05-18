@@ -23,6 +23,7 @@ type ComponentType =
   | 'InlineText'
   | 'CellText'
   | 'Caption'
+  | 'Div'
 
 type MetaComponentType =
   | 'FormControlMeta'

@@ -24,6 +24,17 @@ const SizeControl: control = {
   },
 }
 export const panelDescriptors: panelDescriptor = {
+  Div: {
+    controls: [
+      {
+        type: 'ChildrenControl',
+        storeKey: 'children',
+        props: {
+          label: 'Inner text',
+        },
+      },
+    ],
+  },
   Button: {
     controls: [
       {

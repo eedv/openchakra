@@ -35,6 +35,8 @@ type PreviewDefaultProps = {
   InlineText: InlineTextProps & HTMLAttributes<HTMLElement>
   CellText: InlineTextProps & HTMLAttributes<HTMLElement>
   Caption: LabelProps & HTMLAttributes<HTMLElement>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Div: any
 }
 
 export const DEFAULT_PROPS: PreviewDefaultProps = {
@@ -99,6 +101,7 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   InputSearch: {
     label: 'InputSearch',
   },
+  Div: {},
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {

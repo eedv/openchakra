@@ -1,10 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
-
+import styled, { css } from 'styled-components'
 import * as Increase from '@increase/typed-components'
 import WithChildrenPreviewContainer from './WithChildrenPreviewContainer'
 import { getComponentBy } from '../../core/selectors/components'
 import PreviewContainer from './PreviewContainer'
+
+const GenericDiv = styled.div`
+  ${css}
+`
+
+const Div: React.FC<any> = ({ children, ...rest }) => {
+  return <GenericDiv {...rest}>{children}</GenericDiv>
+}
 
 const ComponentPreview: React.FC<{
   componentName: string
@@ -17,7 +26,15 @@ const ComponentPreview: React.FC<{
   const type = (component && component.type) || null
 
   switch (type) {
-    // Components with childrens
+    case 'Div':
+      return (
+        <WithChildrenPreviewContainer
+          component={component}
+          type={Div}
+          {...forwardedProps}
+          isBoxWrapped
+        />
+      )
     case 'Grid':
       return (
         <WithChildrenPreviewContainer

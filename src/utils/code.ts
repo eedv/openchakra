@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import isBoolean from 'lodash/isBoolean'
 
 const capitalize = (value: string) => {
@@ -93,19 +94,24 @@ const My${component.type} = () => (
 export const generateCode = async (components: IComponents) => {
   let code = buildBlock(components.root, components)
 
+  const hasDiv = Object.values(components).find(comp => comp.type === 'Div')
   const imports = [
     ...new Set(
       Object.keys(components)
         .filter(name => name !== 'root')
-        .map(name => components[name].type),
+        .map(name => components[name].type)
+        .filter(type => type !== 'Div'),
     ),
   ]
 
   code = `import React from 'react';
+  ${hasDiv ? "import styled, { css } from 'styled-components'" : ''}
 import {
   ThemeProvider,
   ${imports.join(',')}
 } from "@increase/typed-components";
+
+${hasDiv ? 'const Div = styled.div`${css}`' : ''}
 
 const App = () => (
   <ThemeProvider>

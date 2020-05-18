@@ -25,6 +25,7 @@ export const COMPONENTS: (ComponentType | MetaComponentType)[] = [
   'InlineText',
   'CellText',
   'Caption',
+  'Div',
 ]
 
 /* export const AccordionWhitelist: (
