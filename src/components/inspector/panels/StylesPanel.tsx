@@ -18,12 +18,14 @@ interface Props {
   isRoot: boolean
   showChildren: boolean
   parentIsRoot: boolean
+  componentType: ComponentType
 }
 
 const StylesPanel: React.FC<Props> = ({
   isRoot,
   showChildren,
   parentIsRoot,
+  componentType,
 }) => (
   <Accordion allowMultiple defaultIndex={[0]}>
     <AccordionContainer title="Class name">
@@ -47,7 +49,7 @@ const StylesPanel: React.FC<Props> = ({
       </AccordionContainer>
     )}
 
-    {!isRoot && (
+    {componentType === 'Div' && (
       <>
         <AccordionContainer title="Layout">
           <DisplayPanel />
@@ -64,17 +66,18 @@ const StylesPanel: React.FC<Props> = ({
         </AccordionContainer>
       </>
     )}
+    {(isRoot || componentType === 'Div') && (
+      <AccordionContainer title="Backgrounds">
+        <ColorsControl
+          enableHues
+          label="Color"
+          name="backgroundColor"
+          withFullColor
+        />
+      </AccordionContainer>
+    )}
 
-    <AccordionContainer title="Backgrounds">
-      <ColorsControl
-        enableHues
-        label="Color"
-        name="backgroundColor"
-        withFullColor
-      />
-    </AccordionContainer>
-
-    {!isRoot && (
+    {componentType === 'Div' && (
       <>
         <AccordionContainer title="Border">
           <BorderPanel />

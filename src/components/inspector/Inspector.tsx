@@ -129,6 +129,7 @@ const Inspector = () => {
       </Box>
 
       <StylesPanel
+        componentType={type}
         isRoot={isRoot}
         parentIsRoot={parentIsRoot}
         showChildren={componentHasChildren}
