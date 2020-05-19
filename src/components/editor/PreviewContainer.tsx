@@ -16,7 +16,6 @@ const PreviewContainer: React.FC<{
   ...forwardedProps
 }) => {
   const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
-  console.log(dragableWrapperProps)
   const children = React.createElement(type, {
     ...component.props,
     ...forwardedProps,

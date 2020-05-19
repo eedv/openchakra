@@ -37,7 +37,6 @@ const CustomPropsPanel = () => {
   }
 
   const activeProps = activePropsRef || []
-  console.log('activeProps', activeProps)
   const customProps = Object.keys(props).filter(
     propsName => !activeProps.includes(propsName),
   )

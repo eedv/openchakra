@@ -15,6 +15,17 @@ export type panelDescriptor = {
   } | null
 }
 
+const getWeightControl = (weigthOptions?: string[]): control => {
+  return {
+    type: 'SelectControl',
+    storeKey: 'weight',
+    props: {
+      label: 'Font weight',
+      options: weigthOptions || ['bold', 'normal', '400', '700'],
+    },
+  }
+}
+
 const SizeControl: control = {
   type: 'SelectControl',
   storeKey: 'size',
@@ -23,27 +34,21 @@ const SizeControl: control = {
     options: ['normal', 'small'],
   },
 }
+
+const ChildrenTextControl: control = {
+  type: 'ChildrenControl',
+  storeKey: 'children',
+  props: {
+    label: 'Inner text',
+  },
+}
 export const panelDescriptors: panelDescriptor = {
   Div: {
-    controls: [
-      {
-        type: 'ChildrenControl',
-        storeKey: 'children',
-        props: {
-          label: 'Inner text',
-        },
-      },
-    ],
+    controls: [ChildrenTextControl],
   },
   Button: {
     controls: [
-      {
-        type: 'ChildrenControl',
-        storeKey: 'children',
-        props: {
-          label: 'Inner text',
-        },
-      },
+      ChildrenTextControl,
       {
         type: 'SelectControl',
         storeKey: 'buttonType',
@@ -146,15 +151,7 @@ export const panelDescriptors: panelDescriptor = {
     ],
   },
   Tag: {
-    controls: [
-      {
-        type: 'TextControl',
-        storeKey: 'colors',
-        props: {
-          label: 'Colors object',
-        },
-      },
-    ],
+    controls: [ChildrenTextControl],
   },
   InputText: {
     controls: [
@@ -202,120 +199,60 @@ export const panelDescriptors: panelDescriptor = {
     ],
   },
   H1: {
-    controls: [
-      {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
-        props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
-        },
-      },
-    ],
+    controls: [ChildrenTextControl, getWeightControl()],
   },
   H2: {
-    controls: [
-      {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
-        props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
-        },
-      },
-    ],
+    controls: [ChildrenTextControl, getWeightControl()],
   },
   H3: {
-    controls: [
-      {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
-        props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
-        },
-      },
-    ],
+    controls: [ChildrenTextControl, getWeightControl()],
   },
   Paragraph: {
     controls: [
+      ChildrenTextControl,
+      getWeightControl(),
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'SwitchControl',
+        storeKey: 'ellipsis',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Text ellipsis',
         },
       },
     ],
   },
   Label: {
-    controls: [
-      {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
-        props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
-        },
-      },
-    ],
+    controls: [ChildrenTextControl, getWeightControl(['bold', '500', '700'])],
   },
   InputLabel: {
-    controls: [
-      {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
-        props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
-        },
-      },
-    ],
+    controls: [ChildrenTextControl, getWeightControl(['bold', '500', '700'])],
   },
   InlineText: {
     controls: [
+      ChildrenTextControl,
+      getWeightControl(),
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'SwitchControl',
+        storeKey: 'inline',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Display inline',
         },
       },
     ],
   },
   CellText: {
     controls: [
+      ChildrenTextControl,
+      getWeightControl(),
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'SwitchControl',
+        storeKey: 'inline',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Display inline',
         },
       },
     ],
   },
   Caption: {
-    controls: [
-      {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
-        props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
-        },
-      },
-    ],
+    controls: [ChildrenTextControl, getWeightControl(['bold', '500', '700'])],
   },
 }

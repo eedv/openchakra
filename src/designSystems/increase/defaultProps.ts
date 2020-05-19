@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, CSSProperties } from 'react'
 import {
   ButtonProps,
   GridProps,
@@ -36,7 +36,7 @@ type PreviewDefaultProps = {
   CellText: InlineTextProps & HTMLAttributes<HTMLElement>
   Caption: LabelProps & HTMLAttributes<HTMLElement>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Div: any
+  Div: { children?: React.ReactNode } & CSSProperties
 }
 
 export const DEFAULT_PROPS: PreviewDefaultProps = {
@@ -74,6 +74,7 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   },
   CellText: {
     children: 'Heading title',
+    inline: true,
   },
   Caption: {
     children: 'Heading title',
