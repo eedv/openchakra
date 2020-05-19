@@ -61,10 +61,9 @@ export const useInteractive = (
       ''} component-selected`
   }
 
-  if (isHovered || isComponentSelected) {
-    dragableWrapperProps.className = `${dragableWrapperProps.className ||
-      ''} component-hovered`
-  }
+  dragableWrapperProps.className = `${dragableWrapperProps.className} ${
+    isHovered && !isComponentSelected ? 'component-hovered' : ''
+  } ${isComponentSelected ? 'component-selected' : ''}`
 
   return { dragableWrapperProps, drag }
 }
