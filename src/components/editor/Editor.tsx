@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Box, Text } from '@chakra-ui/core'
+import { Box, Text, Link } from '@chakra-ui/core'
 import ComponentPreview from './ComponentPreview'
 import { useDropComponent } from '../../hooks/useDropComponent'
 import SplitPane from 'react-split-pane'
@@ -63,16 +63,16 @@ const Editor: React.FC = () => {
       {isEmpty && (
         <Text color="gray.400" fontSize="xl" maxWidth="md" textAlign="center">
           Drag some component to start coding without code! Or load{' '}
-          {/* <Link
+          <Link
             color="gray.500"
             onClick={(e: React.MouseEvent) => {
               e.stopPropagation()
-              dispatch.components.loadDemo('onboarding')
+              dispatch.components.loadDemo('basic')
             }}
             textDecoration="underline"
           >
-            the onboarding components
-          </Link> */}
+            a basic component
+          </Link>
           .
         </Text>
       )}
