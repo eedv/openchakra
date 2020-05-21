@@ -21,7 +21,7 @@ const TextControl: React.FC<TextControlPropsType> = ({
   const value = usePropsSelector(name)
 
   return (
-    <FormControl hasColumn htmlFor={name} label={label}>
+    <FormControl hasColumn={hasColumn} htmlFor={name} label={label}>
       <Input
         autoComplete="off"
         id={name}
