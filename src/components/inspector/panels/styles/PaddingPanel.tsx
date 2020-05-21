@@ -22,7 +22,7 @@ const ATTRIBUTES = {
     left: 'marginLeft',
     right: 'marginRight',
     bottom: 'marginBottom',
-    top: 'mmarginTop',
+    top: 'marginTop',
   },
   padding: {
     all: 'padding',

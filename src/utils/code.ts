@@ -110,7 +110,7 @@ import {
   ThemeProvider,
   ${imports.join(',')}
 } from "@increase/typed-components";
-
+import "@increase/typed-components/dist/index.css"
 ${hasDiv ? 'const Div = styled.div`${css}`' : ''}
 
 const App = () => (

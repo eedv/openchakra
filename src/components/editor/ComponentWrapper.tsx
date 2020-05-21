@@ -36,7 +36,7 @@ export const ComponentWrapper = forwardRef((props: any, ref: any) => {
       const componentElement = ref.current.firstChild
       if (
         componentElement.nodeType === document.TEXT_NODE ||
-        getComputedStyle(componentElement).display.indexOf('inline')
+        getComputedStyle(componentElement).display.indexOf('inline') !== -1
       ) {
         setDisplayType('inline')
       } else {
