@@ -41,7 +41,7 @@ const FormControl: React.FC<FormControlPropType> = ({
       alignItems="center"
       display="flex"
       justifyItems="center"
-      width={hasColumn ? '30px' : '130px'}
+      width={hasColumn ? '30px' : '100%'}
     >
       {children}
     </Box>

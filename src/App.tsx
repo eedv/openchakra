@@ -28,18 +28,18 @@ const App = () => {
         <Flex h="calc(100vh - 3rem)">
           <Sidebar />
           <EditorErrorBoundary>
-            <Box bg="white" flex={1} zIndex={10} position="relative">
+            <Box bg="white" flex={1} position="relative" zIndex={10}>
               <Editor />
             </Box>
           </EditorErrorBoundary>
 
           <Box
-            maxH="calc(100vh - 3rem)"
-            flex="0 0 15rem"
             bg="#f7fafc"
-            overflowY="auto"
-            overflowX="visible"
             borderLeft="1px solid #cad5de"
+            flex="0 0 20rem"
+            maxH="calc(100vh - 3rem)"
+            overflowX="visible"
+            overflowY="auto"
           >
             <InspectorProvider>
               <Inspector />

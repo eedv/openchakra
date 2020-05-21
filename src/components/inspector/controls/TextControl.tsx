@@ -32,7 +32,7 @@ const TextControl: React.FC<TextControlPropsType> = ({
         size="sm"
         type="text"
         value={value || ''}
-        width={hasColumn ? '3rem' : '100%'}
+        width={hasColumn ? '5rem' : '100%'}
       />
     </FormControl>
   )
