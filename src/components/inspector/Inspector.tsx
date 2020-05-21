@@ -51,7 +51,6 @@ const Inspector = () => {
   const component = useSelector(getSelectedComponent)
 
   const { clearActiveProps } = useInspectorUpdate()
-  debugger
   const { type, rootParentType, id, children } = component
 
   const isRoot = id === 'root'

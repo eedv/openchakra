@@ -5,7 +5,7 @@ import templates, { TemplateType } from '../../templates/index'
 import { generateId } from '../../utils/generateId'
 import { duplicateComponent, deleteComponent } from '../../utils/recursive'
 import omit from 'lodash/omit'
-console.log('teplates', templates)
+
 export type ComponentsState = {
   components: IComponents
   selectedId: IComponent['id']
