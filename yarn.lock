@@ -1236,10 +1236,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@increase/typed-components@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@increase/typed-components/-/typed-components-2.3.0.tgz#0c1f35b02fda6b9c1930c4a29b934bac03d35108"
-  integrity sha512-GEFX//FJVYLZMw/OGlpjIQe1zC2TDyLZcQn48PiHoD3ypXSuOLWnH52qM6ElyM0PldnsocQGiR/zdlilLxzB6w==
+"@increase/typed-components@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@increase/typed-components/-/typed-components-3.0.2.tgz#f91810ab122f53fc9dc24fa67e2ed4d5aeef7711"
+  integrity sha512-tOH3IMESU9sHrcX4G+yJoh0+JkSTZu4nclEr8bFV0u0WHGzQji7E6EB38ko228vo7ulbmjfeOTmU/isZCs649w==
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"

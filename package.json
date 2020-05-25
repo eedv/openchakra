@@ -8,7 +8,7 @@
     "@chakra-ui/core": "^0.5.2",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
-    "@increase/typed-components": "^2.3.0",
+    "@increase/typed-components": "3.0.2",
     "@mdx-js/react": "^1.5.5",
     "@reach/combobox": "^0.7.3",
     "@rehooks/local-storage": "^2.1.1",
