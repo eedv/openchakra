@@ -45,11 +45,11 @@ const ComponentPreview: React.FC<{
           isBoxWrapped
         />
       )
-    case 'option':
+    case 'SelectOption':
       return (
         <PreviewContainer
           component={component}
-          type={'option'}
+          type={Increase[type]}
           {...forwardedProps}
           isBoxWrapped={false}
         />

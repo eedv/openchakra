@@ -40,7 +40,7 @@ type PreviewDefaultProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Div: { children?: React.ReactNode } & CSSProperties
   Select: SelectProps
-  option: HTMLAttributes<HTMLOptionElement>
+  SelectOption: HTMLAttributes<HTMLOptionElement>
   Stepper: {}
   StepperStep: StepperStepProps
 }
@@ -72,18 +72,18 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     children: 'Label title',
   },
   InputLabel: {
-    children: 'Heading title',
+    children: 'Input label',
   },
   InlineText: {
-    children: 'Heading title',
+    children: 'Inline text',
     inline: true,
   },
   CellText: {
-    children: 'Heading title',
+    children: 'Cell text',
     inline: true,
   },
   Caption: {
-    children: 'Heading title',
+    children: 'Caption',
   },
   Tag: {
     children: 'Tag name',
@@ -113,7 +113,7 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     label: 'hola',
     id: 'tatata',
   },
-  option: {
+  SelectOption: {
     children: 'Opcion',
   },
   Stepper: {},

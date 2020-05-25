@@ -82,7 +82,7 @@ export const panelDescriptors: panelDescriptor = {
       },
     ],
   },
-  option: {
+  SelectOption: {
     controls: [ChildrenTextControl],
   },
   Stepper: {

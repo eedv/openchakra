@@ -27,7 +27,7 @@ export const COMPONENTS: (ComponentType | MetaComponentType)[] = [
   'Caption',
   'Div',
   'Select',
-  'option',
+  'SelectOption',
   'Stepper',
   'StepperStep',
 ]

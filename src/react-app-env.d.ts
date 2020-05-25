@@ -25,7 +25,7 @@ type ComponentType =
   | 'Caption'
   | 'Div'
   | 'Select'
-  | 'option'
+  | 'SelectOption'
   | 'Stepper'
   | 'StepperStep'
 

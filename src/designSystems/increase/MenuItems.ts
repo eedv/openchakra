@@ -33,7 +33,7 @@ export const menuItems: MenuItemsType = {
   Div: {},
   Select: {
     children: {
-      option: {},
+      SelectOption: {},
     },
   },
   Stepper: {
