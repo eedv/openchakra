@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ControlTypes } from '../../components/inspector/controls/ControlTypes'
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export type control = {
   type: keyof ControlTypes
   storeKey: string
@@ -66,6 +66,20 @@ export const panelDescriptors: panelDescriptor = {
         },
       },
       SizeControl,
+      {
+        type: 'SwitchControl',
+        storeKey: 'inline',
+        props: {
+          label: 'Inline mode',
+        },
+      },
+      {
+        type: 'SwitchControl',
+        storeKey: 'labelHidden',
+        props: {
+          label: 'Hide Label',
+        },
+      },
     ],
   },
   option: {
@@ -152,6 +166,13 @@ export const panelDescriptors: panelDescriptor = {
         },
       },
       SizeControl,
+      {
+        type: 'SwitchControl',
+        storeKey: 'labelHidden',
+        props: {
+          label: 'Hide Label',
+        },
+      },
     ],
   },
   Currency: {
@@ -183,6 +204,13 @@ export const panelDescriptors: panelDescriptor = {
   },
   Checkbox: {
     controls: [
+      {
+        type: 'TextControl',
+        storeKey: 'label',
+        props: {
+          label: 'Label',
+        },
+      },
       SizeControl,
       {
         type: 'SwitchControl',
@@ -224,17 +252,37 @@ export const panelDescriptors: panelDescriptor = {
         },
       },
       SizeControl,
+      {
+        type: 'SwitchControl',
+        storeKey: 'inline',
+        props: {
+          label: 'Inline mode',
+        },
+      },
     ],
   },
   InputNumber: {
     controls: [
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'TextControl',
+        storeKey: 'label',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Label',
+        },
+      },
+      {
+        type: 'TextControl',
+        storeKey: 'placeholder',
+        props: {
+          label: 'Placeholder',
+        },
+      },
+      SizeControl,
+      {
+        type: 'SwitchControl',
+        storeKey: 'inline',
+        props: {
+          label: 'Inline mode',
         },
       },
     ],
@@ -242,12 +290,25 @@ export const panelDescriptors: panelDescriptor = {
   InputSearch: {
     controls: [
       {
-        type: 'ColorsControl',
-        storeKey: 'backgroundColor',
+        type: 'TextControl',
+        storeKey: 'label',
         props: {
-          label: 'Color',
-          withFullColor: true,
-          enableHues: true,
+          label: 'Label',
+        },
+      },
+      {
+        type: 'TextControl',
+        storeKey: 'placeholder',
+        props: {
+          label: 'Placeholder',
+        },
+      },
+      SizeControl,
+      {
+        type: 'SwitchControl',
+        storeKey: 'inline',
+        props: {
+          label: 'Inline mode',
         },
       },
     ],
