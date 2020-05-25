@@ -59,10 +59,10 @@ export const panelDescriptors: panelDescriptor = {
   Select: {
     controls: [
       {
-        type: 'ChildrenControl',
+        type: 'TextControl',
         storeKey: 'label',
         props: {
-          label: 'Select an option',
+          label: 'Label',
         },
       },
       SizeControl,
