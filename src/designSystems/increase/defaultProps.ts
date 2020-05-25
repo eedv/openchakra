@@ -14,6 +14,7 @@ import {
   Paragraph as ParagraphProps,
   LabelProps,
   InlineTexts as InlineTextProps,
+  SelectProps,
 } from '@increase/typed-components'
 type PreviewDefaultProps = {
   Button: ButtonProps
@@ -37,6 +38,8 @@ type PreviewDefaultProps = {
   Caption: LabelProps & HTMLAttributes<HTMLElement>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Div: { children?: React.ReactNode } & CSSProperties
+  Select: SelectProps
+  option: HTMLAttributes<HTMLOptionElement>
 }
 
 export const DEFAULT_PROPS: PreviewDefaultProps = {
@@ -103,6 +106,13 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     label: 'InputSearch',
   },
   Div: {},
+  Select: {
+    label: 'hola',
+    id: 'tatata',
+  },
+  option: {
+    children: 'Opcion',
+  },
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {

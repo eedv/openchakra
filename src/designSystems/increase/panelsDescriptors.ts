@@ -44,6 +44,31 @@ const ChildrenTextControl: control = {
 }
 export const panelDescriptors: panelDescriptor = {
   Div: {
+    controls: [
+      ChildrenTextControl,
+      {
+        type: 'SelectControl',
+        storeKey: 'as',
+        props: {
+          label: 'Render as',
+          options: ['div', 'option'],
+        },
+      },
+    ],
+  },
+  Select: {
+    controls: [
+      {
+        type: 'ChildrenControl',
+        storeKey: 'label',
+        props: {
+          label: 'Select an option',
+        },
+      },
+      SizeControl,
+    ],
+  },
+  option: {
     controls: [ChildrenTextControl],
   },
   Button: {
