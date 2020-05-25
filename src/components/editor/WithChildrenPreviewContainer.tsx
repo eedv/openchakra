@@ -20,9 +20,8 @@ const WithChildrenPreviewContainer: React.FC<{
   const { drop, isOver } = useDropComponent(component.id)
   const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
 
-  dragableWrapperProps.className = `${dragableWrapperProps.className || ''} ${
-    !component.children.length ? 'container-component-style' : ''
-  } ${isOver ? 'component-is-over' : ''}`
+  dragableWrapperProps.isOver = isOver
+  dragableWrapperProps.isContainer = component.children.length === 0
 
   const children = React.createElement(
     type,

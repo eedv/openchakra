@@ -3,20 +3,38 @@ import React, { useEffect, forwardRef, useState } from 'react'
 import styled from '@emotion/styled'
 type displayType = 'block' | 'inline' | 'contents'
 
-export const Wrapper = styled.div<{ displayType: displayType }>`
+export const Wrapper = styled.div<wrapperProps & { displayType: displayType }>`
   display: ${({ displayType }) => displayType || 'contents'};
-  &.container-component-style > * {
+  position: relative;
+  &.show-layout > * {
     padding: 1rem;
-    outline: 2px dashed rgba(124, 138, 227, 0.4);
+    outline: 1px dashed grey;
   }
-  &.component-hovered > * {
+  &.is-drop-target > * {
+    background-color: rgba(124, 138, 227, 0.4);
+  }
+
+  &.is-drop-target >::before {
+    position:absolute;
+    content: "${({ componentType }) => componentType}";
+    top: -1.1rem;
+    font-size: 0.85rem;
+  }
+
+  &.is-hovered > * {
     cursor: pointer;
     outline: 2px dashed rgba(124, 138, 227, 0.8);
   }
-  &.component-is-over > * {
-    background-color: rgba(124, 138, 227, 0.4);
+  &.is-hovered::before, &.is-selected::before {
+    position:absolute;
+    content: "${({ componentType }) => componentType}";
+    top: -1.1rem;
+    left: 0;
+    font-size: 0.85rem;
+
   }
-  &.component-selected > * {
+
+  &.is-selected > * {
     outline: 2px solid rgba(124, 138, 227);
   }
 `
@@ -25,14 +43,29 @@ declare global {
     chrome: any
   }
 }
-const isChrome =
-  !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)
+
+export type wrapperProps = {
+  ref: any
+  className: string
+  childClassName: string
+  isOver: boolean
+  isContainer: boolean
+  isHovered: boolean
+  isSelected: boolean
+  showLayout: boolean
+  componentType: ComponentType
+  onMouseOver: (event: React.MouseEvent<HTMLElement>) => void
+  onMouseOut: (event: React.MouseEvent<HTMLElement>) => void
+  onClick: (event: React.MouseEvent<HTMLElement>) => void
+  onDoubleClick: (event: React.MouseEvent<HTMLElement>) => void
+}
+
 // eslint-disable-next-line react/display-name
 export const ComponentWrapper = forwardRef((props: any, ref: any) => {
   const [displayType, setDisplayType] = useState<displayType>('contents')
 
   useEffect(() => {
-    if (isChrome && ref && ref.current && ref.current.firstChild) {
+    if (ref && ref.current && ref.current.firstChild) {
       const componentElement = ref.current.firstChild
       if (
         componentElement.nodeType === document.TEXT_NODE ||
@@ -44,5 +77,29 @@ export const ComponentWrapper = forwardRef((props: any, ref: any) => {
       }
     }
   }, [ref])
-  return <Wrapper {...props} displayType={displayType} ref={ref} />
+  const {
+    className,
+    childClassName,
+    showLayout,
+    isOver,
+    isHovered,
+    isSelected,
+  } = props
+  const classNames = [
+    className || '',
+    showLayout ? 'show-layout' : '',
+    isOver ? 'is-drop-target' : '',
+    isHovered ? 'is-hovered' : '',
+    isSelected ? 'is-selected' : '',
+    childClassName || '',
+  ]
+
+  return (
+    <Wrapper
+      {...props}
+      className={classNames.join(' ').trim()}
+      displayType={displayType}
+      ref={ref}
+    />
+  )
 })

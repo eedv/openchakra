@@ -12,7 +12,7 @@ const PreviewContainer: React.FC<{
   component,
   type,
   enableVisualHelper,
-  isBoxWrapped,
+  isBoxWrapped = true,
   ...forwardedProps
 }) => {
   const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
@@ -21,6 +21,9 @@ const PreviewContainer: React.FC<{
     ...forwardedProps,
   })
 
+  if (!isBoxWrapped) {
+    return children
+  }
   return (
     <ComponentWrapper {...dragableWrapperProps}>{children}</ComponentWrapper>
   )

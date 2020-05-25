@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useRef, MouseEvent } from 'react'
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import useDispatch from './useDispatch'
 import { useDrag } from 'react-dnd'
@@ -8,15 +8,8 @@ import {
   getIsHovered,
 } from '../core/selectors/components'
 import { getShowLayout, getFocusedComponent } from '../core/selectors/app'
+import { wrapperProps } from '../components/editor/ComponentWrapper'
 
-type wrapperProps = {
-  ref: any
-  className?: string
-  onMouseOver: (event: MouseEvent) => void
-  onMouseOut: (event: MouseEvent) => void
-  onClick: (event: MouseEvent) => void
-  onDoubleClick: (event: MouseEvent) => void
-}
 export const useInteractive = (
   component: IComponent,
   enableVisualHelper = false,
@@ -32,38 +25,34 @@ export const useInteractive = (
   })
 
   const ref = useRef<HTMLDivElement>(null)
-  const dragableWrapperProps: wrapperProps = {
+  const dragableWrapperProps: Partial<wrapperProps> = {
     ref: drag(ref),
-    onMouseOver: (event: MouseEvent) => {
+    className: '',
+    childClassName: component.props.className,
+    onMouseOver: event => {
       event.stopPropagation()
       dispatch.components.hover(component.id)
     },
     onMouseOut: () => {
       dispatch.components.unhover()
     },
-    onClick: (event: MouseEvent) => {
+    onClick: event => {
       event.preventDefault()
       event.stopPropagation()
       dispatch.components.select(component.id)
     },
-    onDoubleClick: (event: MouseEvent) => {
+    onDoubleClick: event => {
       event.preventDefault()
       event.stopPropagation()
       if (focusInput === false) {
         dispatch.app.toggleInputText()
       }
     },
+    isHovered: isHovered && !isComponentSelected,
+    isSelected: isComponentSelected,
+    showLayout,
+    componentType: component.type,
   }
-
-  // TODO: add classnames to ComponentWrapper as export
-  if (showLayout && enableVisualHelper) {
-    dragableWrapperProps.className = `${dragableWrapperProps.className ||
-      ''} component-selected`
-  }
-
-  dragableWrapperProps.className = `${dragableWrapperProps.className} ${
-    isHovered && !isComponentSelected ? 'component-hovered' : ''
-  } ${isComponentSelected ? 'component-selected' : ''}`
 
   return { dragableWrapperProps, drag }
 }
