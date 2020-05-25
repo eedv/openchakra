@@ -31,4 +31,9 @@ export const menuItems: MenuItemsType = {
   CellText: {},
   Caption: {},
   Div: {},
+  Select: {
+    children: {
+      option: {},
+    },
+  },
 }

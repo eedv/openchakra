@@ -26,6 +26,8 @@ export const COMPONENTS: (ComponentType | MetaComponentType)[] = [
   'CellText',
   'Caption',
   'Div',
+  'Select',
+  'option',
 ]
 
 /* export const AccordionWhitelist: (

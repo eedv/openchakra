@@ -85,7 +85,7 @@ const Menu = () => {
                   label={name}
                   rootParentType={menuItems[name]?.rootParentType || name}
                   soon={soon}
-                  type={`${name}Meta` as any}
+                  type={`${name}` as any}
                 >
                   {name}
                 </DragItem>,

@@ -24,7 +24,6 @@ const ComponentPreview: React.FC<{
   }
 
   const type = (component && component.type) || null
-
   switch (type) {
     case 'Div':
       return (
@@ -32,16 +31,26 @@ const ComponentPreview: React.FC<{
           component={component}
           type={Div}
           {...forwardedProps}
-          isBoxWrapped
+          isBoxWrapped={false}
         />
       )
     case 'Grid':
+    case 'Select':
       return (
         <WithChildrenPreviewContainer
           component={component}
           type={Increase[type]}
           {...forwardedProps}
           isBoxWrapped
+        />
+      )
+    case 'option':
+      return (
+        <PreviewContainer
+          component={component}
+          type={'option'}
+          {...forwardedProps}
+          isBoxWrapped={false}
         />
       )
     default:

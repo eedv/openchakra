@@ -24,14 +24,10 @@ type ComponentType =
   | 'CellText'
   | 'Caption'
   | 'Div'
+  | 'Select'
+  | 'option'
 
-type MetaComponentType =
-  | 'FormControlMeta'
-  | 'AccordionMeta'
-  | 'ListMeta'
-  | 'AlertMeta'
-  | 'InputGroupMeta'
-  | 'BreadcrumbMeta'
+type MetaComponentType = 'SelectMeta'
 
 interface IComponent {
   children: string[]

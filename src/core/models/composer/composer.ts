@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DEFAULT_PROPS } from '../../../designSystems/increase/defaultProps'
 import { generateId } from '../../../utils/generateId'
 
