@@ -16,6 +16,7 @@ import {
   InlineTexts as InlineTextProps,
   SelectProps,
   StepperStepProps,
+  RadioButtonProps,
 } from '@increase/typed-components'
 type PreviewDefaultProps = {
   Button: ButtonProps
@@ -43,6 +44,7 @@ type PreviewDefaultProps = {
   SelectOption: HTMLAttributes<HTMLOptionElement>
   Stepper: {}
   StepperStep: StepperStepProps
+  RadioButton: RadioButtonProps
 }
 
 export const DEFAULT_PROPS: PreviewDefaultProps = {
@@ -121,6 +123,11 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     description: 'Título descriptivo en negrita',
     status: 'done',
     title: 'Paso X',
+  },
+  RadioButton: {
+    checked: true,
+    label: 'Option 1',
+    name: 'radioExample',
   },
 }
 

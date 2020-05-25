@@ -15,7 +15,6 @@ const PreviewContainer: React.FC<{
   isBoxWrapped = true,
   ...forwardedProps
 }) => {
-  debugger
   const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
   const children = React.createElement(type, {
     ...component.props,

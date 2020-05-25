@@ -28,6 +28,7 @@ type ComponentType =
   | 'SelectOption'
   | 'Stepper'
   | 'StepperStep'
+  | 'RadioButton'
 
 type MetaComponentType = 'SelectMeta' | 'StepperMeta'
 

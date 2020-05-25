@@ -175,6 +175,25 @@ export const panelDescriptors: panelDescriptor = {
       },
     ],
   },
+  RadioButton: {
+    controls: [
+      {
+        type: 'TextControl',
+        storeKey: 'label',
+        props: {
+          label: 'Label',
+        },
+      },
+      SizeControl,
+      {
+        type: 'SwitchControl',
+        storeKey: 'inline',
+        props: {
+          label: 'Inline mode',
+        },
+      },
+    ],
+  },
   Currency: {
     controls: [
       {
