@@ -71,6 +71,35 @@ export const panelDescriptors: panelDescriptor = {
   option: {
     controls: [ChildrenTextControl],
   },
+  Stepper: {
+    controls: [],
+  },
+  StepperStep: {
+    controls: [
+      {
+        type: 'TextControl',
+        storeKey: 'description',
+        props: {
+          label: 'Description',
+        },
+      },
+      {
+        type: 'TextControl',
+        storeKey: 'title',
+        props: {
+          label: 'Title',
+        },
+      },
+      {
+        type: 'SelectControl',
+        storeKey: 'status',
+        props: {
+          label: 'Step status',
+          options: ['current', 'pending', 'done'],
+        },
+      },
+    ],
+  },
   Button: {
     controls: [
       ChildrenTextControl,

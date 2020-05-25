@@ -15,6 +15,7 @@ import {
   LabelProps,
   InlineTexts as InlineTextProps,
   SelectProps,
+  StepperStepProps,
 } from '@increase/typed-components'
 type PreviewDefaultProps = {
   Button: ButtonProps
@@ -40,6 +41,8 @@ type PreviewDefaultProps = {
   Div: { children?: React.ReactNode } & CSSProperties
   Select: SelectProps
   option: HTMLAttributes<HTMLOptionElement>
+  Stepper: {}
+  StepperStep: StepperStepProps
 }
 
 export const DEFAULT_PROPS: PreviewDefaultProps = {
@@ -112,6 +115,12 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   },
   option: {
     children: 'Opcion',
+  },
+  Stepper: {},
+  StepperStep: {
+    description: 'Título descriptivo en negrita',
+    status: 'done',
+    title: 'Paso X',
   },
 }
 

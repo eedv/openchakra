@@ -36,6 +36,7 @@ const ComponentPreview: React.FC<{
       )
     case 'Grid':
     case 'Select':
+    case 'Stepper':
       return (
         <WithChildrenPreviewContainer
           component={component}

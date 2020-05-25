@@ -26,8 +26,10 @@ type ComponentType =
   | 'Div'
   | 'Select'
   | 'option'
+  | 'Stepper'
+  | 'StepperStep'
 
-type MetaComponentType = 'SelectMeta'
+type MetaComponentType = 'SelectMeta' | 'StepperMeta'
 
 interface IComponent {
   children: string[]

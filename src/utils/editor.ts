@@ -28,6 +28,8 @@ export const COMPONENTS: (ComponentType | MetaComponentType)[] = [
   'Div',
   'Select',
   'option',
+  'Stepper',
+  'StepperStep',
 ]
 
 /* export const AccordionWhitelist: (

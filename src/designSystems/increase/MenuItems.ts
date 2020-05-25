@@ -36,4 +36,9 @@ export const menuItems: MenuItemsType = {
       option: {},
     },
   },
+  Stepper: {
+    children: {
+      StepperStep: {},
+    },
+  },
 }
