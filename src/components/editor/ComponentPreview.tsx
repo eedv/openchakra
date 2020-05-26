@@ -31,7 +31,7 @@ const ComponentPreview: React.FC<{
           component={component}
           type={Div}
           {...forwardedProps}
-          isBoxWrapped={false}
+          isBoxWrapped
         />
       )
     case 'Grid':
