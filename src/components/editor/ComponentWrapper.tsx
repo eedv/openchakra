@@ -13,25 +13,26 @@ export const Wrapper = styled.div<wrapperProps & { displayType: displayType }>`
   &.is-drop-target {
     background-color: rgba(124, 138, 227, 0.4);
   }
-
-  &.is-drop-target::before {
-    position:absolute;
-    content: "${({ componentType }) => componentType}";
-    top: -1.1rem;
-    font-size: 0.85rem;
-  }
-
   &.is-hovered {
     cursor: pointer;
     outline: 2px dashed rgba(124, 138, 227, 0.8);
   }
-  &.is-hovered::before, &.is-selected::before {
+  &::after {
     position:absolute;
+    display: none;
+    background-color: white;
+    border: 1px solid rgba(124, 138, 227, 0.8);
+    border-radius: 3px;
+    padding: 0 6px;
+    transform: translate(-3px, -120%);
+    font-weight: bold;
     content: "${({ componentType }) => componentType}";
-    top: -1.1rem;
+    top: 0;
     left: 0;
     font-size: 0.85rem;
-
+  }
+  &.is-hovered::after, &.is-selected::after, &.is-drop-target::after {
+    display: block;
   }
 
   &.is-selected {
