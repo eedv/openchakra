@@ -20,36 +20,40 @@ import {
   RadioButtonProps,
   DateInputProps,
 } from '@increase/typed-components'
+
+type defaultProps =
+  | ButtonProps
+  | GridProps
+  | SwitchProps
+  | CurrencyProps
+  | CheckboxProps
+  | SpinnerProps
+  | (TagProps & HTMLAttributes<HTMLElement>)
+  | InputTextProps
+  | InputNumberProps
+  | InputSearchProps
+  | (DefaultTypographyProps & HTMLAttributes<HTMLElement>)
+  | (DefaultTypographyProps & HTMLAttributes<HTMLElement>)
+  | (DefaultTypographyProps & HTMLAttributes<HTMLElement>)
+  | (ParagraphProps & HTMLAttributes<HTMLElement>)
+  | (LabelProps & HTMLAttributes<HTMLElement>)
+  | (LabelProps & HTMLAttributes<HTMLElement>)
+  | (InlineTextProps & HTMLAttributes<HTMLElement>)
+  | (InlineTextProps & HTMLAttributes<HTMLElement>)
+  | (LabelProps & HTMLAttributes<HTMLElement>)
+  | ({ children?: React.ReactNode } & CSSProperties)
+  | SelectProps
+  | HTMLAttributes<HTMLOptionElement>
+  | {}
+  | StepperStepProps
+  | RadioButtonProps
+  | Partial<DateInputProps>
+  | Partial<DateInputProps>
+
 type PreviewDefaultProps = {
-  Button: ButtonProps
-  Grid: GridProps
-  Switch: SwitchProps
-  Currency: CurrencyProps
-  Checkbox: CheckboxProps
-  Spinner: SpinnerProps
-  Tag: TagProps & HTMLAttributes<HTMLElement>
-  InputText: InputTextProps
-  InputNumber: InputNumberProps
-  InputSearch: InputSearchProps
-  H1: DefaultTypographyProps & HTMLAttributes<HTMLElement>
-  H2: DefaultTypographyProps & HTMLAttributes<HTMLElement>
-  H3: DefaultTypographyProps & HTMLAttributes<HTMLElement>
-  Paragraph: ParagraphProps & HTMLAttributes<HTMLElement>
-  Label: LabelProps & HTMLAttributes<HTMLElement>
-  InputLabel: LabelProps & HTMLAttributes<HTMLElement>
-  InlineText: InlineTextProps & HTMLAttributes<HTMLElement>
-  CellText: InlineTextProps & HTMLAttributes<HTMLElement>
-  Caption: LabelProps & HTMLAttributes<HTMLElement>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Div: { children?: React.ReactNode } & CSSProperties
-  Select: SelectProps
-  SelectOption: HTMLAttributes<HTMLOptionElement>
-  Stepper: {}
-  StepperStep: StepperStepProps
-  RadioButton: RadioButtonProps
-  DateInput: Partial<DateInputProps>
-  DateRangeInput: Partial<DateInputProps>
+  [key in ComponentType]: defaultProps
 }
+
 const date = format(new Date(), 'dd/MM/yyyy')
 console.log('Date', date)
 export const DEFAULT_PROPS: PreviewDefaultProps = {
