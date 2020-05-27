@@ -389,4 +389,10 @@ export const panelDescriptors: panelDescriptor = {
   Caption: {
     controls: [ChildrenTextControl, getWeightControl(['bold', '500', '700'])],
   },
+  DateInput: {
+    controls: [],
+  },
+  DateRangeInput: {
+    controls: [],
+  },
 }

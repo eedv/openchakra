@@ -29,6 +29,8 @@ type ComponentType =
   | 'Stepper'
   | 'StepperStep'
   | 'RadioButton'
+  | 'DateInput'
+  | 'DateRangeInput'
 
 type MetaComponentType = 'SelectMeta' | 'StepperMeta'
 

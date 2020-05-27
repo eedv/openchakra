@@ -1,4 +1,5 @@
 import { HTMLAttributes, CSSProperties } from 'react'
+import format from 'date-fns/format'
 import {
   ButtonProps,
   GridProps,
@@ -17,6 +18,7 @@ import {
   SelectProps,
   StepperStepProps,
   RadioButtonProps,
+  DateInputProps,
 } from '@increase/typed-components'
 type PreviewDefaultProps = {
   Button: ButtonProps
@@ -45,8 +47,11 @@ type PreviewDefaultProps = {
   Stepper: {}
   StepperStep: StepperStepProps
   RadioButton: RadioButtonProps
+  DateInput: Partial<DateInputProps>
+  DateRangeInput: Partial<DateInputProps>
 }
-
+const date = format(new Date(), 'dd/MM/yyyy')
+console.log('Date', date)
 export const DEFAULT_PROPS: PreviewDefaultProps = {
   Button: {
     children: 'Button default coso',
@@ -128,6 +133,14 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     checked: true,
     label: 'Option 1',
     name: 'radioExample',
+  },
+  DateInput: {
+    value: '20/10/2020',
+    label: 'Date',
+  },
+  DateRangeInput: {
+    value: [new Date(), new Date()],
+    label: 'Date',
   },
 }
 

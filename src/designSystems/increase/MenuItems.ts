@@ -32,6 +32,12 @@ export const menuItems: MenuItemsType = {
   CellText: {},
   Caption: {},
   Div: {},
+  DateInput: {
+    soon: true,
+  },
+  DateRangeInput: {
+    soon: true,
+  },
   Select: {
     children: {
       SelectOption: {},

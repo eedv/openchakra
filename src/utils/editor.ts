@@ -31,6 +31,8 @@ export const COMPONENTS: (ComponentType | MetaComponentType)[] = [
   'Stepper',
   'StepperStep',
   'RadioButton',
+  'DateInput',
+  'DateRangeInput',
 ]
 
 /* export const AccordionWhitelist: (
