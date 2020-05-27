@@ -1,7 +1,7 @@
 import React, { useState, memo, useEffect } from 'react'
-import { Link, Box, Stack } from '@chakra-ui/core'
+import { Box, Stack } from '@chakra-ui/core'
 import Panels from './panels/Panels'
-import { GoRepo, GoCode } from 'react-icons/go'
+import { GoCode } from 'react-icons/go'
 import { FiTrash2 } from 'react-icons/fi'
 import { IoMdRefresh } from 'react-icons/io'
 import { useSelector } from 'react-redux'
@@ -51,12 +51,11 @@ const Inspector = () => {
   const component = useSelector(getSelectedComponent)
 
   const { clearActiveProps } = useInspectorUpdate()
-  const { type, rootParentType, id, children } = component
+  const { type, id, children } = component
 
   const isRoot = id === 'root'
   const parentIsRoot = component.parent === 'root'
 
-  const docType = rootParentType || type
   const componentHasChildren = children.length > 0
 
   useEffect(() => {
@@ -101,17 +100,6 @@ const Inspector = () => {
               icon={IoMdRefresh}
               label="Reset props"
               onClick={() => dispatch.components.resetProps(component.id)}
-            />
-            <ActionButton
-              as={Link}
-              icon={GoRepo}
-              label="Chakra UI Doc"
-              onClick={() => {
-                window.open(
-                  `https://chakra-ui.com/${docType.toLowerCase()}`,
-                  '_blank',
-                )
-              }}
             />
             <ActionButton
               bg="red.500"
