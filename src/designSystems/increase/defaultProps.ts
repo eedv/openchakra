@@ -1,5 +1,4 @@
 import { HTMLAttributes, CSSProperties } from 'react'
-import format from 'date-fns/format'
 import {
   ButtonProps,
   GridProps,
@@ -54,8 +53,6 @@ type PreviewDefaultProps = {
   [key in ComponentType]: defaultProps
 }
 
-const date = format(new Date(), 'dd/MM/yyyy')
-console.log('Date', date)
 export const DEFAULT_PROPS: PreviewDefaultProps = {
   Button: {
     children: 'Button default coso',
