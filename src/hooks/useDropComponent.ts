@@ -1,5 +1,5 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
-import { rootComponents } from '../utils/editor'
+import { rootComponents } from '../designSystems/increase/editor'
 import useDispatch from './useDispatch'
 import builder from '../core/models/composer/builder'
 
