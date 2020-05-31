@@ -25,6 +25,7 @@ export const INITIAL_COMPONENTS: IComponents = {
     parent: DEFAULT_ID,
     type: 'Button' as ComponentType,
     children: [],
+    isContainer: false,
     props: {},
   },
 }
@@ -153,6 +154,7 @@ const components = createModel({
         type: ComponentType
         rootParentType?: ComponentType
         testId?: string
+        isContainer?: boolean
       },
     ): ComponentsState {
       return produce(state, (draftState: ComponentsState) => {
@@ -165,6 +167,7 @@ const components = createModel({
           children: [],
           type: payload.type,
           parent: payload.parentName,
+          isContainer: payload.isContainer || false,
           rootParentType: payload.rootParentType || payload.type,
         }
       })

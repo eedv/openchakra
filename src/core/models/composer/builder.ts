@@ -1,5 +1,8 @@
 import Composer from './composer'
-import { menuItems } from '../../../designSystems/increase/MenuItems'
+import {
+  presetsList,
+  MenuItemType,
+} from '../../../designSystems/increase/MenuItems'
 
 type ComposedComponent = {
   components: IComponents
@@ -7,21 +10,37 @@ type ComposedComponent = {
   parent: string
 }
 
+const presetBuilder = (
+  composer: Composer,
+  components: MenuItemType[],
+  nodeId: string,
+) => {
+  for (let i = 0; i < components.length; i++) {
+    const component = components[i]
+    const currentNodeId = composer.addNode({
+      type: component.type,
+      parent: nodeId,
+    })
+    if (component.children) {
+      presetBuilder(composer, component.children, currentNodeId)
+    }
+  }
+}
+
 export const builder = (
-  type: ComponentType,
+  presetType: PresetType,
   parent: string,
 ): ComposedComponent => {
   const composer = new Composer()
-  const children = menuItems[type]?.children
+  const presetConfig = presetsList.find(preset => preset.type === presetType)
 
   const nodeId = composer.addNode({
-    type,
+    type: presetConfig?.mainComponentType || 'Div',
     parent,
   })
-  if (children) {
-    Object.keys(children).forEach(childType => {
-      composer.addNode({ type: childType as ComponentType, parent: nodeId })
-    })
+
+  if (presetConfig && presetConfig.children) {
+    presetBuilder(composer, presetConfig.children, nodeId)
   }
 
   const components = composer.getComponents()

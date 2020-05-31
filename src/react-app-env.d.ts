@@ -32,7 +32,7 @@ type ComponentType =
   | 'DateInput'
   | 'DateRangeInput'
 
-type MetaComponentType = 'SelectMeta' | 'StepperMeta'
+type PresetType = 'StepperPreset' | 'MegaDiv'
 
 interface IComponent {
   children: string[]
@@ -40,6 +40,7 @@ interface IComponent {
   parent: string
   id: string
   props: any
+  isContainer?: boolean
   rootParentType?: ComponentType
 }
 
@@ -55,9 +56,11 @@ interface ComponentItemProps {
   id: string
   label: string
   type: ComponentType
+  presetType?: PresetType
   isMoved?: boolean
   isChild?: boolean
   isMeta?: boolean
   soon?: boolean
   rootParentType?: ComponentType
+  isContainer: boolean
 }

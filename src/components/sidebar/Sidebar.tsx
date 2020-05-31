@@ -9,10 +9,7 @@ import {
   IconButton,
 } from '@chakra-ui/core'
 import DragItem from './DragItem'
-import {
-  MenuItemType as MenuItem,
-  menuItems,
-} from '../../designSystems/increase/MenuItems'
+import { menuItems, presetsList } from '../../designSystems/increase/MenuItems'
 
 const Menu = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -58,36 +55,56 @@ const Menu = () => {
           />
         </InputGroup>
 
-        {(Object.keys(menuItems) as ComponentType[])
-          .filter(c => c.toLowerCase().includes(searchTerm.toLowerCase()))
-          .map(name => {
-            const { children, soon } = menuItems[name] as MenuItem
+        {presetsList
+          .filter(c => c.type.toLowerCase().includes(searchTerm.toLowerCase()))
+          .map(item => {
+            const { type } = item
+            return (
+              <DragItem
+                id={type}
+                isContainer={true}
+                isMeta={true}
+                key={type}
+                label={type}
+                presetType={item.type}
+                type={item.mainComponentType}
+              >
+                {type}
+              </DragItem>
+            )
+          })}
+        {menuItems
+          .filter(c => c.type.toLowerCase().includes(searchTerm.toLowerCase()))
+          .map(item => {
+            const { children, soon, isContainer, type } = item
 
             if (children) {
-              const elements = Object.keys(children).map(childName => (
+              const elements = children.map(child => (
                 <DragItem
-                  id={childName as any}
+                  id={child.type}
                   isChild
-                  key={childName}
-                  label={childName}
-                  rootParentType={menuItems[name]?.rootParentType || name}
-                  type={childName as any}
+                  isContainer={child.isContainer || false}
+                  key={child.type}
+                  label={child.type}
+                  rootParentType={child.rootParentType || child.type}
+                  type={child.type}
                 >
-                  {childName}
+                  {child.type}
                 </DragItem>
               ))
 
               return [
                 <DragItem
-                  id={`${name}Meta` as any}
+                  id={`${type}Meta`}
+                  isContainer={isContainer || false}
                   isMeta
-                  key={`${name}Meta`}
-                  label={name}
-                  rootParentType={menuItems[name]?.rootParentType || name}
+                  key={`${type}Meta`}
+                  label={type}
+                  rootParentType={item.rootParentType || type}
                   soon={soon}
-                  type={`${name}` as any}
+                  type={type}
                 >
-                  {name}
+                  {type}
                 </DragItem>,
                 ...elements,
               ]
@@ -95,14 +112,15 @@ const Menu = () => {
 
             return (
               <DragItem
-                id={name as any}
-                key={name}
-                label={name}
-                rootParentType={menuItems[name]?.rootParentType || name}
+                id={type}
+                isContainer={isContainer || false}
+                key={type}
+                label={type}
+                rootParentType={item.rootParentType || type}
                 soon={soon}
-                type={name as any}
+                type={type}
               >
-                {name}
+                {type}
               </DragItem>
             )
           })}

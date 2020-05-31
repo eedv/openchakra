@@ -6,7 +6,7 @@ import * as Increase from '@increase/typed-components'
 import WithChildrenPreviewContainer from './WithChildrenPreviewContainer'
 import { getComponentBy } from '../../core/selectors/components'
 import PreviewContainer from './PreviewContainer'
-
+import { menuItems } from '../../designSystems/increase/MenuItems'
 const GenericDiv = styled.div`
   ${css}
 `
@@ -19,51 +19,42 @@ const ComponentPreview: React.FC<{
   componentName: string
 }> = ({ componentName, ...forwardedProps }) => {
   const component = useSelector(getComponentBy(componentName))
+  const compDef = menuItems.find(item => item.type === component.type)
+
   if (!component) {
     console.error(`ComponentPreview unavailable for component ${componentName}`)
   }
 
+  const isContainer = (compDef && compDef.isContainer) || null
   const type = (component && component.type) || null
-  switch (type) {
-    case 'Div':
-      return (
-        <WithChildrenPreviewContainer
-          component={component}
-          type={Div}
-          {...forwardedProps}
-          isBoxWrapped
-        />
-      )
-    case 'Grid':
-    case 'Select':
-    case 'Stepper':
-      return (
-        <WithChildrenPreviewContainer
-          component={component}
-          type={Increase[type]}
-          {...forwardedProps}
-          isBoxWrapped
-        />
-      )
-    case 'SelectOption':
-      return (
-        <PreviewContainer
-          component={component}
-          type={Increase[type]}
-          {...forwardedProps}
-          isBoxWrapped={false}
-        />
-      )
-    default:
-      return (
-        <PreviewContainer
-          component={component}
-          type={Increase[type]}
-          {...forwardedProps}
-          isBoxWrapped
-        />
-      )
+  if (type === 'Div') {
+    return (
+      <WithChildrenPreviewContainer
+        component={component}
+        type={Div}
+        {...forwardedProps}
+        isBoxWrapped={false}
+      />
+    )
+  } else if (isContainer) {
+    return (
+      <WithChildrenPreviewContainer
+        component={component}
+        type={Increase[type]}
+        {...forwardedProps}
+        isBoxWrapped
+      />
+    )
   }
+
+  return (
+    <PreviewContainer
+      component={component}
+      type={Increase[type]}
+      {...forwardedProps}
+      isBoxWrapped={true}
+    />
+  )
 }
 
 export default memo(ComponentPreview)

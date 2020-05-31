@@ -20,6 +20,7 @@
     "copy-to-clipboard": "^3.2.1",
     "date-fns": "^2.13.0",
     "emotion-theming": "^10.0.27",
+    "immer": "^6.0.9",
     "lodash": "^4.17.15",
     "lodash-es": "^4.17.15",
     "lz-string": "^1.4.4",

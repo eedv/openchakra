@@ -51,7 +51,7 @@ export const panelDescriptors: panelDescriptor = {
         storeKey: 'as',
         props: {
           label: 'Render as',
-          options: ['div', 'option'],
+          options: ['div', 'span', 'td', 'tr', 'ul', 'li', 'option'],
         },
       },
     ],

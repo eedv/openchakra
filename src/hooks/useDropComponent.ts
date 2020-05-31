@@ -5,11 +5,10 @@ import builder from '../core/models/composer/builder'
 
 export const useDropComponent = (
   componentId: string,
-  accept: (ComponentType | MetaComponentType)[] = rootComponents,
+  accept: (ComponentType | PresetType)[] = rootComponents,
   canDrop = true,
 ) => {
   const dispatch = useDispatch()
-
   const [{ isOver }, drop] = useDrop({
     accept,
     collect: monitor => ({
@@ -19,19 +18,20 @@ export const useDropComponent = (
       if (!monitor.isOver()) {
         return
       }
-
       if (item.isMoved) {
         dispatch.components.moveComponent({
           parentId: componentId,
           componentId: item.id,
         })
-      } else if (item.isMeta) {
-        dispatch.components.addMetaComponent(builder(item.type, componentId))
+      } else if (item.presetType) {
+        const metaComponent = builder(item.presetType, componentId)
+        dispatch.components.addMetaComponent(metaComponent)
       } else {
         dispatch.components.addComponent({
           parentName: componentId,
           type: item.type,
           rootParentType: item.rootParentType,
+          isContainer: item.isContainer,
         })
       }
     },
