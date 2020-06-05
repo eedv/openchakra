@@ -57,8 +57,8 @@ const Menu = () => {
 
         {presetsList
           .filter(c => c.type.toLowerCase().includes(searchTerm.toLowerCase()))
-          .map(item => {
-            const { type } = item
+          .map(preset => {
+            const { type } = preset
             return (
               <DragItem
                 id={type}
@@ -66,8 +66,8 @@ const Menu = () => {
                 isMeta={true}
                 key={type}
                 label={type}
-                presetType={item.type}
-                type={item.mainComponentType}
+                presetType={type}
+                type={preset.mainComponentType}
               >
                 {type}
               </DragItem>

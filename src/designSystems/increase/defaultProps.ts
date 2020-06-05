@@ -18,6 +18,9 @@ import {
   StepperStepProps,
   RadioButtonProps,
   DateInputProps,
+  TableProps,
+  TableRowProps,
+  TdProps,
 } from '@increase/typed-components'
 
 type defaultProps =
@@ -48,6 +51,9 @@ type defaultProps =
   | RadioButtonProps
   | Partial<DateInputProps>
   | Partial<DateInputProps>
+  | TableProps
+  | TableRowProps
+  | TdProps
 
 type PreviewDefaultProps = {
   [key in ComponentType]: defaultProps
@@ -143,6 +149,12 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
     value: [new Date(), new Date()],
     label: 'Date',
   },
+  TableWrapper: {},
+  Table: {},
+  TableHeader: {},
+  THead: {},
+  TableRow: {},
+  Td: {},
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {

@@ -53,6 +53,29 @@ export const menuItems: MenuItemType[] = [
     type: 'Stepper',
     isContainer: true,
   },
+  {
+    type: 'TableWrapper',
+    isContainer: true,
+  },
+  {
+    type: 'Table',
+    isContainer: true,
+  },
+  {
+    type: 'TableHeader',
+    isContainer: true,
+  },
+  {
+    type: 'THead',
+    isContainer: true,
+  },
+  {
+    type: 'TableRow',
+    isContainer: true,
+  },
+  {
+    type: 'Td',
+  },
 ]
 
 export const presetsList: Preset[] = [
@@ -62,6 +85,20 @@ export const presetsList: Preset[] = [
     children: [
       {
         type: 'StepperStep',
+      },
+    ],
+  },
+  {
+    type: 'TablePreset',
+    mainComponentType: 'TableWrapper',
+    children: [
+      {
+        type: 'TableHeader',
+        children: [{ type: 'H2' }, { type: 'Button' }],
+      },
+      {
+        type: 'Table',
+        children: [{ type: 'THead' }],
       },
     ],
   },
