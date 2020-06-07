@@ -2,7 +2,7 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import * as Increase from '@increase/typed-components'
 import WithChildrenPreviewContainer from './WithChildrenPreviewContainer'
@@ -13,7 +13,7 @@ const GenericDiv = styled.div``
 
 const Div: React.FC<any> = ({ children, ...rest }) => {
   return (
-    <GenericDiv {...rest} css={rest}>
+    <GenericDiv {...rest} style={rest}>
       {children}
     </GenericDiv>
   )
@@ -37,7 +37,7 @@ const ComponentPreview: React.FC<{
         component={component}
         type={Div}
         {...forwardedProps}
-        isBoxWrapped={false}
+        isBoxWrapped={true}
       />
     )
   } else if (isContainer) {

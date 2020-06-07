@@ -396,10 +396,55 @@ export const panelDescriptors: panelDescriptor = {
     controls: [],
   },
   TableWrapper: { controls: [] },
-  Table: { controls: [] },
+  Table: {
+    controls: [
+      {
+        type: 'SwitchControl',
+        storeKey: 'zebra',
+        props: {
+          label: 'Zebra stripes',
+        },
+      },
+      {
+        type: 'SwitchControl',
+        storeKey: 'hasData',
+        props: {
+          label: 'Has data',
+        },
+      },
+    ],
+  },
   TableHeader: { controls: [] },
   THead: { controls: [] },
-  TableRow: { controls: [] },
+  TableRow: {
+    controls: [
+      {
+        type: 'SwitchControl',
+        storeKey: 'double',
+        props: {
+          label: 'Double size row',
+        },
+      },
+    ],
+  },
   Td: { controls: [ChildrenTextControl] },
   Th: { controls: [ChildrenTextControl] },
+  Pagination: {
+    controls: [
+      {
+        type: 'NumberControl',
+        storeKey: 'currentPage',
+        props: {
+          label: 'Current page',
+        },
+      },
+      {
+        type: 'NumberControl',
+        storeKey: 'totalPages',
+        props: {
+          label: 'Total pages',
+        },
+      },
+    ],
+  },
 }

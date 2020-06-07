@@ -81,6 +81,9 @@ export const menuItems: MenuItemType[] = [
     type: 'Th',
     isContainer: true,
   },
+  {
+    type: 'Pagination',
+  },
 ]
 
 export const presetsList: Preset[] = [

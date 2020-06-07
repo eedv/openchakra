@@ -38,6 +38,7 @@ type ComponentType =
   | 'TableRow'
   | 'Td'
   | 'Th'
+  | 'Pagination'
 
 type PresetType = 'StepperPreset' | 'MegaDiv' | 'TablePreset'
 

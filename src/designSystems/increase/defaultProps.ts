@@ -162,6 +162,10 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   Th: {
     children: 'TH',
   },
+  Pagination: {
+    currentPage: 2,
+    totalPages: 5,
+  },
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {
