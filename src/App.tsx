@@ -6,7 +6,7 @@ import Editor from './components/editor/Editor'
 import Inspector from './components/inspector/Inspector'
 import Sidebar from './components/sidebar/Sidebar'
 import Header from './components/Header'
-import { Global } from '@emotion/core'
+import { Global, css } from '@emotion/core'
 import { HotKeys } from 'react-hotkeys'
 import useShortcuts, { keyMap } from './hooks/useShortcuts'
 import EditorErrorBoundary from './components/errorBoundaries/EditorErrorBoundary'
@@ -18,9 +18,49 @@ const App = () => {
   return (
     <HotKeys allowChanges handlers={handlers} keyMap={keyMap}>
       <Global
-        styles={() => ({
-          html: { minWidth: '860px', backgroundColor: '#1a202c' },
-        })}
+        styles={css`
+          html {
+            min-width: 860px;
+            background-color: #1a202c;
+          }
+          position: relative;
+          .show-layout {
+            padding: 1rem;
+            outline: 1px dashed grey;
+          }
+          .is-drop-target {
+            background-color: rgba(124, 138, 227, 0.4);
+          }
+          .is-hovered {
+            cursor: pointer;
+            outline: 2px dashed rgba(124, 138, 227, 0.8);
+          }
+          .is-hovered::after,
+          .is-selected::after,
+          .is-drop-target::after::after {
+            position: absolute;
+            display: none;
+            background-color: white;
+            border: 1px solid rgba(124, 138, 227, 0.8);
+            border-radius: 3px;
+            padding: 0 6px;
+            transform: translate(-3px, -120%);
+            font-weight: bold;
+            content: 'Component';
+            top: 0;
+            left: 0;
+            font-size: 0.85rem;
+          }
+          .is-hovered::after,
+          .is-selected::after,
+          .is-drop-target::after {
+            display: block;
+          }
+
+          .is-selected {
+            outline: 2px solid rgba(124, 138, 227);
+          }
+        `}
       />
 
       <Header />
