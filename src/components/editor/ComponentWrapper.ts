@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, forwardRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 type displayType = 'block' | 'inline-block' | 'contents'
 
-export const Wrapper = styled.div<wrapperProps & { displayType: displayType }>`
+export const Wrapper = styled.div<{
+  displayType: displayType
+  componentType: string | ComponentType
+}>`
   display: ${({ displayType }) => displayType || 'contents'};
   position: relative;
   &.show-layout {
@@ -39,11 +42,6 @@ export const Wrapper = styled.div<wrapperProps & { displayType: displayType }>`
     outline: 2px solid rgba(124, 138, 227);
   }
 `
-declare global {
-  interface Window {
-    chrome: any
-  }
-}
 
 export type wrapperProps = {
   ref: any
@@ -61,13 +59,16 @@ export type wrapperProps = {
   onDoubleClick: (event: React.MouseEvent<HTMLElement>) => void
 }
 
-// eslint-disable-next-line react/display-name
-export const ComponentWrapper = forwardRef((props: any, ref: any) => {
-  const [displayType, setDisplayType] = useState<displayType>('contents')
+export const unWrappableElements = ['tbody', 'thead', 'th', 'tr', 'tbody', 'td']
 
+// TODO: improve typings
+export const useComponentStyles = (params: any) => {
+  const [displayType, setDisplayType] = useState<displayType>('contents')
+  const [nodeName, setNodeName] = useState('')
   useEffect(() => {
-    if (ref && ref.current && ref.current.firstChild) {
-      const componentElement = ref.current.firstChild
+    if (params.ref && params.ref.current && params.ref.current.firstChild) {
+      const componentElement = params.ref.current.firstChild
+      setNodeName(componentElement.nodeName.toLowerCase())
       if (
         componentElement.nodeType === document.TEXT_NODE ||
         getComputedStyle(componentElement).display.indexOf('inline') !== -1
@@ -77,7 +78,7 @@ export const ComponentWrapper = forwardRef((props: any, ref: any) => {
         setDisplayType('block')
       }
     }
-  }, [ref, props])
+  }, [params.ref, params.rest])
   const {
     className,
     childClassName,
@@ -85,7 +86,7 @@ export const ComponentWrapper = forwardRef((props: any, ref: any) => {
     isOver,
     isHovered,
     isSelected,
-  } = props
+  } = params
   const classNames = [
     className || '',
     showLayout ? 'show-layout' : '',
@@ -94,13 +95,5 @@ export const ComponentWrapper = forwardRef((props: any, ref: any) => {
     isSelected ? 'is-selected' : '',
     childClassName || '',
   ]
-
-  return (
-    <Wrapper
-      {...props}
-      className={classNames.join(' ').trim()}
-      displayType={displayType}
-      ref={ref}
-    />
-  )
-})
+  return { displayType, nodeName, classNames: classNames.join(' ').trim() }
+}

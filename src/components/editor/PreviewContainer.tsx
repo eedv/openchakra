@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FunctionComponent, ComponentClass } from 'react'
 import { useInteractive } from '../../hooks/useInteractive'
-import { ComponentWrapper } from './ComponentWrapper'
+import {
+  useComponentStyles,
+  Wrapper,
+  unWrappableElements,
+} from './ComponentWrapper'
 
 const PreviewContainer: React.FC<{
   component: IComponent
@@ -16,16 +20,31 @@ const PreviewContainer: React.FC<{
   ...forwardedProps
 }) => {
   const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
+  const { displayType, nodeName, classNames } = useComponentStyles(
+    dragableWrapperProps,
+  )
+  if (unWrappableElements.includes(nodeName)) {
+    return React.createElement(type, {
+      ...component.props,
+      ...forwardedProps,
+      ...dragableWrapperProps,
+      className: classNames,
+    })
+  }
+
   const children = React.createElement(type, {
     ...component.props,
     ...forwardedProps,
   })
-
-  if (!isBoxWrapped) {
-    return children
-  }
   return (
-    <ComponentWrapper {...dragableWrapperProps}>{children}</ComponentWrapper>
+    <Wrapper
+      {...dragableWrapperProps}
+      className={classNames}
+      componentType={component.type}
+      displayType={displayType}
+    >
+      {children}
+    </Wrapper>
   )
 }
 
