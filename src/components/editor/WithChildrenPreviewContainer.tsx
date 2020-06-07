@@ -23,36 +23,43 @@ const WithChildrenPreviewContainer: React.FC<{
 }) => {
   const { drop, isOver } = useDropComponent(component.id)
   const { dragableWrapperProps } = useInteractive(component, enableVisualHelper)
-
+  const Component = type
   dragableWrapperProps.isOver = isOver
   dragableWrapperProps.ref = drop(dragableWrapperProps.ref)
   const { displayType, nodeName, classNames } = useComponentStyles(
     dragableWrapperProps,
   )
+
   if (unWrappableElements.includes(nodeName) || !isBoxWrapped) {
-    return React.createElement(
-      type,
-      {
-        ...component.props,
-        ...forwardedProps,
-        ...dragableWrapperProps,
-        className: classNames,
-      },
-      component.children.map((key: string) => (
-        <ComponentPreview componentName={key} key={key} />
-      )),
+    return (
+      <Component
+        {...{
+          ...component.props,
+          ...forwardedProps,
+          ...dragableWrapperProps,
+          className: classNames,
+        }}
+      >
+        {component.props.children}
+        {component.children.map((key: string) => (
+          <ComponentPreview componentName={key} key={key} />
+        ))}
+      </Component>
     )
   }
 
-  const children = React.createElement(
-    type,
-    {
-      ...component.props,
-      ...forwardedProps,
-    },
-    component.children.map((key: string) => (
-      <ComponentPreview componentName={key} key={key} />
-    )),
+  const children = (
+    <Component
+      {...{
+        ...component.props,
+        ...forwardedProps,
+      }}
+    >
+      {component.props.children}
+      {component.children.map((key: string) => (
+        <ComponentPreview componentName={key} key={key} />
+      ))}
+    </Component>
   )
   return (
     <Wrapper
