@@ -77,6 +77,10 @@ export const menuItems: MenuItemType[] = [
     type: 'Td',
     isContainer: true,
   },
+  {
+    type: 'Th',
+    isContainer: true,
+  },
 ]
 
 export const presetsList: Preset[] = [
@@ -106,44 +110,39 @@ export const presetsList: Preset[] = [
               {
                 type: 'TableRow',
                 children: [
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
+                  { type: 'Th' },
+                  { type: 'Th' },
+                  { type: 'Th' },
+                  { type: 'Th' },
                 ],
               },
             ],
           },
           {
-            type: 'Div',
+            type: 'TableRow',
             children: [
-              {
-                type: 'TableRow',
-                children: [
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                ],
-              },
-              {
-                type: 'TableRow',
-                children: [
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                ],
-              },
-              {
-                type: 'TableRow',
-                children: [
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                  { type: 'Td' },
-                ],
-              },
+              { type: 'Td' },
+              { type: 'Td' },
+              { type: 'Td' },
+              { type: 'Td' },
+            ],
+          },
+          {
+            type: 'TableRow',
+            children: [
+              { type: 'Td' },
+              { type: 'Td' },
+              { type: 'Td' },
+              { type: 'Td' },
+            ],
+          },
+          {
+            type: 'TableRow',
+            children: [
+              { type: 'Td' },
+              { type: 'Td' },
+              { type: 'Td' },
+              { type: 'Td' },
             ],
           },
         ],
