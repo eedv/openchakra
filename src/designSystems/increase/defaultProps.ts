@@ -21,6 +21,7 @@ import {
   TableProps,
   TableRowProps,
   TdProps,
+  ThProps,
 } from '@increase/typed-components'
 
 type defaultProps =
@@ -54,6 +55,7 @@ type defaultProps =
   | TableProps
   | TableRowProps
   | TdProps
+  | ThProps
 
 type PreviewDefaultProps = {
   [key in ComponentType]: defaultProps
@@ -156,6 +158,9 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   TableRow: {},
   Td: {
     children: 'TD',
+  },
+  Th: {
+    children: 'TH',
   },
 }
 

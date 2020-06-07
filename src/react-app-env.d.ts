@@ -37,6 +37,7 @@ type ComponentType =
   | 'THead'
   | 'TableRow'
   | 'Td'
+  | 'Th'
 
 type PresetType = 'StepperPreset' | 'MegaDiv' | 'TablePreset'
 

@@ -401,4 +401,5 @@ export const panelDescriptors: panelDescriptor = {
   THead: { controls: [] },
   TableRow: { controls: [] },
   Td: { controls: [ChildrenTextControl] },
+  Th: { controls: [ChildrenTextControl] },
 }
