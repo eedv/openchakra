@@ -154,7 +154,9 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   TableHeader: {},
   THead: {},
   TableRow: {},
-  Td: {},
+  Td: {
+    children: 'TD',
+  },
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {

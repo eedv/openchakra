@@ -75,6 +75,7 @@ export const menuItems: MenuItemType[] = [
   },
   {
     type: 'Td',
+    isContainer: true,
   },
 ]
 
@@ -98,7 +99,54 @@ export const presetsList: Preset[] = [
       },
       {
         type: 'Table',
-        children: [{ type: 'THead' }],
+        children: [
+          {
+            type: 'THead',
+            children: [
+              {
+                type: 'TableRow',
+                children: [
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                ],
+              },
+            ],
+          },
+          {
+            type: 'Div',
+            children: [
+              {
+                type: 'TableRow',
+                children: [
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                ],
+              },
+              {
+                type: 'TableRow',
+                children: [
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                ],
+              },
+              {
+                type: 'TableRow',
+                children: [
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                  { type: 'Td' },
+                ],
+              },
+            ],
+          },
+        ],
       },
     ],
   },

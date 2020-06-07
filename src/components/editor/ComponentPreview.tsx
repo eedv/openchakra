@@ -30,7 +30,7 @@ const ComponentPreview: React.FC<{
   }
 
   const isContainer = (compDef && compDef.isContainer) || null
-  const type = (component && component.type) || null
+  const type = component && component.type
   if (type === 'Div') {
     return (
       <WithChildrenPreviewContainer

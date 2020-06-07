@@ -51,7 +51,7 @@ export const panelDescriptors: panelDescriptor = {
         storeKey: 'as',
         props: {
           label: 'Render as',
-          options: ['div', 'span', 'td', 'tr', 'ul', 'li', 'option'],
+          options: ['div', 'span', 'tbody', 'td', 'tr', 'ul', 'li', 'option'],
         },
       },
     ],
@@ -395,4 +395,10 @@ export const panelDescriptors: panelDescriptor = {
   DateRangeInput: {
     controls: [],
   },
+  TableWrapper: { controls: [] },
+  Table: { controls: [] },
+  TableHeader: { controls: [] },
+  THead: { controls: [] },
+  TableRow: { controls: [] },
+  Td: { controls: [] },
 }

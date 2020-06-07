@@ -31,8 +31,14 @@ type ComponentType =
   | 'RadioButton'
   | 'DateInput'
   | 'DateRangeInput'
+  | 'TableWrapper'
+  | 'Table'
+  | 'TableHeader'
+  | 'THead'
+  | 'TableRow'
+  | 'Td'
 
-type PresetType = 'StepperPreset' | 'MegaDiv'
+type PresetType = 'StepperPreset' | 'MegaDiv' | 'TablePreset'
 
 interface IComponent {
   children: string[]
