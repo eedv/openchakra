@@ -1,18 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
-import styled, { css } from 'styled-components'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { jsx } from '@emotion/core'
+import styled from '@emotion/styled'
 import * as Increase from '@increase/typed-components'
 import WithChildrenPreviewContainer from './WithChildrenPreviewContainer'
 import { getComponentBy } from '../../core/selectors/components'
 import PreviewContainer from './PreviewContainer'
 import { menuItems } from '../../designSystems/increase/MenuItems'
-const GenericDiv = styled.div`
-  ${css}
-`
+const GenericDiv = styled.div``
 
 const Div: React.FC<any> = ({ children, ...rest }) => {
-  return <GenericDiv {...rest}>{children}</GenericDiv>
+  return (
+    <GenericDiv {...rest} css={rest}>
+      {children}
+    </GenericDiv>
+  )
 }
 
 const ComponentPreview: React.FC<{
