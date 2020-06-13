@@ -23,6 +23,8 @@ import {
   TdProps,
   ThProps,
 } from '@increase/typed-components'
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const mockFunction = () => {}
 
 type defaultProps =
   | ButtonProps
@@ -165,9 +167,11 @@ export const DEFAULT_PROPS: PreviewDefaultProps = {
   Pagination: {
     currentPage: 2,
     totalPages: 5,
+    onSelectPage: mockFunction,
   },
 }
 
 export const getDefaultFormProps = (type: ComponentType) => {
   return { ...DEFAULT_PROPS[type] }
 }
+export const rootComponents = Object.keys(DEFAULT_PROPS) as ComponentType[]
