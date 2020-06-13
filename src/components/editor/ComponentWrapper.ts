@@ -59,7 +59,15 @@ export type wrapperProps = {
   onDoubleClick: (event: React.MouseEvent<HTMLElement>) => void
 }
 
-export const unWrappableElements = ['tbody', 'thead', 'th', 'tr', 'tbody', 'td']
+export const unWrappableElements = [
+  'tbody',
+  'thead',
+  'th',
+  'tr',
+  'tbody',
+  'td',
+  'option',
+]
 
 // TODO: improve typings
 export const useComponentStyles = (params: any) => {

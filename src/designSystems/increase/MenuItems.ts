@@ -150,24 +150,8 @@ export const presetsList: Preset[] = [
           },
         ],
       },
-    ],
-  },
-  // Example of a complex preset
-  {
-    type: 'MegaDiv',
-    mainComponentType: 'Div',
-    children: [
       {
-        type: 'Div',
-        children: [{ type: 'Checkbox' }],
-      },
-      {
-        type: 'Div',
-        children: [
-          { type: 'Switch' },
-          { type: 'Tag' },
-          { type: 'Div', children: [{ type: 'Div' }] },
-        ],
+        type: 'Pagination',
       },
     ],
   },
