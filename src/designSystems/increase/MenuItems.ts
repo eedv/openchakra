@@ -155,3 +155,11 @@ export const presetsList: Preset[] = [
     ],
   },
 ]
+
+export const getComponentDefinition = (type: ComponentType) => {
+  return menuItems.find(c => c.type === type)
+}
+
+export const getPresetDefinition = (type: PresetType) => {
+  return presetsList.find(p => p.type === type)
+}

@@ -8,7 +8,7 @@ import * as Increase from '@increase/typed-components'
 import WithChildrenPreviewContainer from './WithChildrenPreviewContainer'
 import { getComponentBy } from '../../core/selectors/components'
 import PreviewContainer from './PreviewContainer'
-import { menuItems } from '../../designSystems/increase/MenuItems'
+import { getComponentDefinition } from '../../designSystems/increase/MenuItems'
 const GenericDiv = styled.div``
 
 const Div: React.FC<any> = ({ children, ...rest }) => {
@@ -23,7 +23,7 @@ const ComponentPreview: React.FC<{
   componentName: string
 }> = ({ componentName, ...forwardedProps }) => {
   const component = useSelector(getComponentBy(componentName))
-  const compDef = menuItems.find(item => item.type === component.type)
+  const compDef = getComponentDefinition(component.type)
 
   if (!component) {
     console.error(`ComponentPreview unavailable for component ${componentName}`)

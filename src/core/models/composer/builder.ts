@@ -1,6 +1,6 @@
 import Composer from './composer'
 import {
-  presetsList,
+  getPresetDefinition,
   MenuItemType,
 } from '../../../designSystems/increase/MenuItems'
 
@@ -32,7 +32,7 @@ export const builder = (
   parent: string,
 ): ComposedComponent => {
   const composer = new Composer()
-  const presetConfig = presetsList.find(preset => preset.type === presetType)
+  const presetConfig = getPresetDefinition(presetType)
 
   const nodeId = composer.addNode({
     type: presetConfig?.mainComponentType || 'Div',
