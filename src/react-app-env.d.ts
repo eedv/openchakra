@@ -41,15 +41,22 @@ type ComponentType =
   | 'Pagination'
 
 type PresetType = 'StepperPreset' | 'MegaDiv' | 'TablePreset'
-
+type seriablizableObject = {
+  [key: string]:
+    | string
+    | number
+    | boolean
+    | seriablizableObject[]
+    | seriablizableObject
+    | undefined
+}
 interface IComponent {
   children: string[]
   type: ComponentType
   parent: string
   id: string
-  props: any
+  props: seriablizableObject
   isContainer?: boolean
-  rootParentType?: ComponentType
 }
 
 interface IComponents {
@@ -69,6 +76,5 @@ interface ComponentItemProps {
   isChild?: boolean
   isMeta?: boolean
   soon?: boolean
-  rootParentType?: ComponentType
   isContainer: boolean
 }

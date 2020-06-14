@@ -6,7 +6,6 @@ type AddNode = {
   type: ComponentType
   parent?: string
   props?: any
-  rootParentType?: ComponentType
 }
 
 class Composer {
@@ -20,18 +19,12 @@ class Composer {
     }
   }
 
-  addNode = ({
-    type,
-    parent = 'root',
-    props = {},
-    rootParentType,
-  }: AddNode): string => {
+  addNode = ({ type, parent = 'root', props = {} }: AddNode): string => {
     const id = generateId()
 
     if (parent === 'root' && !this.rootComponentType) {
       this.rootComponentType = type
     }
-    const localRootParentType = rootParentType || this.rootComponentType
 
     this.components = {
       ...this.components,
@@ -41,7 +34,6 @@ class Composer {
         parent,
         id,
         props: { ...DEFAULT_PROPS[type], ...props },
-        rootParentType: localRootParentType,
       },
     }
 

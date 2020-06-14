@@ -14,9 +14,8 @@ const componentFixtures: IComponents = {
       bg: 'whatsapp.500',
     },
     children: ['comp-2'],
-    type: 'Box',
+    type: 'Div',
     parent: 'root',
-    rootParentType: 'Box',
   },
   'comp-2': {
     id: 'comp-2',
@@ -24,9 +23,8 @@ const componentFixtures: IComponents = {
       children: 'Lorem Ipsum',
     },
     children: [],
-    type: 'Text',
+    type: 'Paragraph',
     parent: 'comp-1',
-    rootParentType: 'Text',
   },
 }
 
@@ -38,9 +36,9 @@ describe('Code utils', () => {
     )
 
     expect(code).toEqual(`const MyBox = () => (
-  <Box bg="whatsapp.500">
-    <Text>Lorem Ipsum</Text>
-  </Box>
+  <Div bg="whatsapp.500">
+    <Paragraph>Lorem Ipsum</Paragraph>
+  </Div>
 )
 `)
   })

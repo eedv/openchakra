@@ -96,7 +96,7 @@ const Editor: React.FC = () => {
         zIndex: 20,
         cursor: 'row-resize',
       }}
-      split="horizontal"
+      split="vertical"
       style={{ overflow: 'auto' }}
     >
       {Playground}

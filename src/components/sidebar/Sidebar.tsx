@@ -86,7 +86,6 @@ const Menu = () => {
                   isContainer={child.isContainer || false}
                   key={child.type}
                   label={child.type}
-                  rootParentType={child.rootParentType || child.type}
                   type={child.type}
                 >
                   {child.type}
@@ -100,7 +99,6 @@ const Menu = () => {
                   isMeta
                   key={`${type}Meta`}
                   label={type}
-                  rootParentType={item.rootParentType || type}
                   soon={soon}
                   type={type}
                 >
@@ -116,7 +114,6 @@ const Menu = () => {
                 isContainer={isContainer || false}
                 key={type}
                 label={type}
-                rootParentType={item.rootParentType || type}
                 soon={soon}
                 type={type}
               >

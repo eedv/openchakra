@@ -9,7 +9,6 @@ const STATE: ComponentsState = {
       id: 'button-testid',
       parent: 'root',
       props: { children: 'Button text' },
-      rootParentType: 'Button',
       type: 'Button',
     },
     root: {
@@ -17,7 +16,7 @@ const STATE: ComponentsState = {
       id: 'root',
       parent: 'root',
       props: {},
-      type: 'Box',
+      type: 'Div',
     },
   },
   selectedId: 'button-testid',
@@ -112,8 +111,7 @@ describe('Components model', () => {
         id: 'box-testid',
         parent: 'root',
         props: {},
-        rootParentType: 'Box',
-        type: 'Box',
+        type: 'Div',
       }
 
       expect(draftState.components['root'].children).toContain('button-testid')
@@ -140,8 +138,7 @@ describe('Components model', () => {
         id: 'box-testid',
         parent: 'root',
         props: {},
-        rootParentType: 'Box',
-        type: 'Box',
+        type: 'Div',
       }
 
       draftState.selectedId = 'root'

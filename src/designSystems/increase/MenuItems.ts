@@ -2,11 +2,10 @@ export type MenuItemType = {
   children?: MenuItemType[]
   isContainer?: boolean
   soon?: boolean
-  rootParentType?: ComponentType
   type: ComponentType
 }
 
-export type Preset = Omit<MenuItemType, 'type' | 'rootParentType'> & {
+export type Preset = Omit<MenuItemType, 'type'> & {
   mainComponentType: ComponentType
   type: PresetType
 }

@@ -152,7 +152,6 @@ const components = createModel({
       payload: {
         parentName: string
         type: ComponentType
-        rootParentType?: ComponentType
         testId?: string
         isContainer?: boolean
       },
@@ -168,7 +167,6 @@ const components = createModel({
           type: payload.type,
           parent: payload.parentName,
           isContainer: payload.isContainer || false,
-          rootParentType: payload.rootParentType || payload.type,
         }
       })
     },

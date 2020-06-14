@@ -98,7 +98,6 @@ test.each(componentsToTest)('Component Preview for %s', componentName => {
   store.dispatch.components.addComponent({
     parentName: 'root',
     type: componentName,
-    rootParentType: componentName,
     testId: 'test',
   })
 

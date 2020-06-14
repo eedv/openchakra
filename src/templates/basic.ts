@@ -18,7 +18,6 @@ export const basic: IComponents = {
     ],
     type: 'Grid',
     parent: 'comp-KAG7RSUYZ6KEO',
-    rootParentType: 'Grid',
   },
   'comp-KAG7Q3RN7NDZ7': {
     id: 'comp-KAG7Q3RN7NDZ7',
@@ -30,7 +29,6 @@ export const basic: IComponents = {
     children: [],
     type: 'InputText',
     parent: 'comp-KAG7Q1OILQBAH',
-    rootParentType: 'InputText',
   },
   'comp-KAG7R3OVBB04C': {
     id: 'comp-KAG7R3OVBB04C',
@@ -43,7 +41,6 @@ export const basic: IComponents = {
     children: [],
     type: 'InputText',
     parent: 'comp-KAG7Q1OILQBAH',
-    rootParentType: 'InputText',
   },
   'comp-KAG7RSUYZ6KEO': {
     id: 'comp-KAG7RSUYZ6KEO',
@@ -57,7 +54,6 @@ export const basic: IComponents = {
     children: ['comp-KAG7Q1OILQBAH'],
     type: 'Div',
     parent: 'root',
-    rootParentType: 'Div',
   },
   'comp-KAG7SZUN2GL4V': {
     id: 'comp-KAG7SZUN2GL4V',
@@ -65,7 +61,6 @@ export const basic: IComponents = {
     children: [],
     type: 'H1',
     parent: 'comp-KAG7TN6TCGBBS',
-    rootParentType: 'H1',
   },
   'comp-KAG7TN6TCGBBS': {
     id: 'comp-KAG7TN6TCGBBS',
@@ -73,7 +68,6 @@ export const basic: IComponents = {
     children: ['comp-KAG7SZUN2GL4V'],
     type: 'Div',
     parent: 'root',
-    rootParentType: 'Div',
   },
   'comp-KAG7V04K6A7WW': {
     id: 'comp-KAG7V04K6A7WW',
@@ -85,7 +79,6 @@ export const basic: IComponents = {
     children: [],
     type: 'InputText',
     parent: 'comp-KAG7Q1OILQBAH',
-    rootParentType: 'InputText',
   },
   'comp-KAG80GFZ4UDER': {
     id: 'comp-KAG80GFZ4UDER',
@@ -93,7 +86,6 @@ export const basic: IComponents = {
     children: ['comp-KAG80RHK3982M'],
     type: 'Div',
     parent: 'comp-KAG7Q1OILQBAH',
-    rootParentType: 'Div',
   },
   'comp-KAG80RHK3982M': {
     id: 'comp-KAG80RHK3982M',
@@ -105,7 +97,6 @@ export const basic: IComponents = {
     children: [],
     type: 'Switch',
     parent: 'comp-KAG80GFZ4UDER',
-    rootParentType: 'Switch',
   },
   'comp-KAG84CLAZ9IKF': {
     id: 'comp-KAG84CLAZ9IKF',
@@ -119,7 +110,6 @@ export const basic: IComponents = {
     children: ['comp-KAG84F3J4OJ4L'],
     type: 'Div',
     parent: 'comp-KAG7Q1OILQBAH',
-    rootParentType: 'Div',
   },
   'comp-KAG84F3J4OJ4L': {
     id: 'comp-KAG84F3J4OJ4L',
@@ -127,6 +117,5 @@ export const basic: IComponents = {
     children: [],
     type: 'Button',
     parent: 'comp-KAG84CLAZ9IKF',
-    rootParentType: 'Button',
   },
 }
