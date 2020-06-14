@@ -62,7 +62,6 @@ const Menu = () => {
             return (
               <DragItem
                 id={type}
-                isContainer={true}
                 isMeta={true}
                 key={type}
                 label={type}
@@ -76,14 +75,13 @@ const Menu = () => {
         {menuItems
           .filter(c => c.type.toLowerCase().includes(searchTerm.toLowerCase()))
           .map(item => {
-            const { children, soon, isContainer, type } = item
+            const { children, soon, type } = item
 
             if (children) {
               const elements = children.map(child => (
                 <DragItem
                   id={child.type}
                   isChild
-                  isContainer={child.isContainer || false}
                   key={child.type}
                   label={child.type}
                   type={child.type}
@@ -95,7 +93,6 @@ const Menu = () => {
               return [
                 <DragItem
                   id={`${type}Meta`}
-                  isContainer={isContainer || false}
                   isMeta
                   key={`${type}Meta`}
                   label={type}
@@ -111,7 +108,6 @@ const Menu = () => {
             return (
               <DragItem
                 id={type}
-                isContainer={isContainer || false}
                 key={type}
                 label={type}
                 soon={soon}

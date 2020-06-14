@@ -55,8 +55,7 @@ interface IComponent {
   type: ComponentType
   parent: string
   id: string
-  props: seriablizableObject
-  isContainer?: boolean
+  props: any
 }
 
 interface IComponents {
@@ -76,5 +75,4 @@ interface ComponentItemProps {
   isChild?: boolean
   isMeta?: boolean
   soon?: boolean
-  isContainer: boolean
 }
