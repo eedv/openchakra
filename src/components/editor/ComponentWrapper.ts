@@ -86,7 +86,7 @@ export const useComponentStyles = (params: any) => {
         setDisplayType('block')
       }
     }
-  }, [params.ref, params.rest])
+  }, [params])
   const {
     className,
     childClassName,
