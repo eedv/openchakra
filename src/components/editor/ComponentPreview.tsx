@@ -1,23 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
-import * as Increase from '@increase/typed-components'
 import WithChildrenPreviewContainer from './WithChildrenPreviewContainer'
 import { getComponentBy } from '../../core/selectors/components'
 import PreviewContainer from './PreviewContainer'
 import { getComponentDefinition } from '../../designSystems/increase/MenuItems'
-const GenericDiv = styled.div``
-
-const Div: React.FC<any> = ({ children, ...rest }) => {
-  return (
-    <GenericDiv {...rest} style={rest}>
-      {children}
-    </GenericDiv>
-  )
-}
+import { getComponent } from '../../designSystems'
 
 const ComponentPreview: React.FC<{
   componentName: string
@@ -35,7 +23,7 @@ const ComponentPreview: React.FC<{
     return (
       <WithChildrenPreviewContainer
         component={component}
-        type={Div}
+        type={getComponent(type)}
         {...forwardedProps}
         isBoxWrapped={true}
       />
@@ -44,7 +32,7 @@ const ComponentPreview: React.FC<{
     return (
       <WithChildrenPreviewContainer
         component={component}
-        type={Increase[type]}
+        type={getComponent(type)}
         {...forwardedProps}
         isBoxWrapped
       />
@@ -54,7 +42,7 @@ const ComponentPreview: React.FC<{
   return (
     <PreviewContainer
       component={component}
-      type={Increase[type]}
+      type={getComponent(type)}
       {...forwardedProps}
       isBoxWrapped={true}
     />

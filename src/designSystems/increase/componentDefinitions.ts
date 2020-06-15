@@ -1,3 +1,6 @@
+import * as IncreaseLibrary from '@increase/typed-components'
+export { IncreaseLibrary }
+
 export enum IncreaseComponents {
   Button = 'Button',
   Grid = 'Grid',
