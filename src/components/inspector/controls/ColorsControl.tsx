@@ -48,7 +48,6 @@ const ColorsControl = (props: ColorControlPropsType) => {
   if (value && colorsNew[value]) {
     propsIconButton = { variantColor: value }
   }
-  debugger
   const huesPicker = (
     <>
       <Grid gap={0} mb={2} templateColumns="repeat(10, 1fr)">
