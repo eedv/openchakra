@@ -68,12 +68,7 @@ const StylesPanel: React.FC<Props> = ({
     )}
     {(isRoot || componentType === 'Div') && (
       <AccordionContainer title="Backgrounds">
-        <ColorsControl
-          enableHues
-          label="Color"
-          name="backgroundColor"
-          withFullColor
-        />
+        <ColorsControl label="Color" name="backgroundColor" withFullColor />
       </AccordionContainer>
     )}
 

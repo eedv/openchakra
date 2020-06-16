@@ -19,62 +19,58 @@ import {
   TabPanels,
   TabPanel,
   Input,
-  useTheme,
 } from '@chakra-ui/core'
 import FormControl from './FormControl'
 import { useForm } from '../../../hooks/useForm'
-import omit from 'lodash/omit'
 import ColorPicker from 'coloreact'
 import 'react-color-picker/index.css'
 import usePropsSelector from '../../../hooks/usePropsSelector'
+import { ThemeProvider } from '@increase/typed-components'
+import { withTheme } from 'styled-components'
 
 type ColorControlPropsType = {
   name: string
   label: string | ReactNode
   enableHues?: boolean
   withFullColor?: boolean
+  theme?: any
 }
 
 const ColorsControl = (props: ColorControlPropsType) => {
   const { setValue, setValueFromEvent } = useForm()
   const [hue, setHue] = useState(500)
   const value = usePropsSelector(props.name)
-  const theme = useTheme()
-
-  const themeColors: any = omit(theme.colors, [
-    'transparent',
-    'current',
-    'black',
-    'white',
-  ])
+  const {
+    theme: { colorsNew },
+  } = props
 
   let propsIconButton: any = { bg: value }
-  if (value && themeColors[value]) {
+  if (value && colorsNew[value]) {
     propsIconButton = { variantColor: value }
   }
-
+  debugger
   const huesPicker = (
     <>
-      <Grid gap={0} mb={2} templateColumns="repeat(5, 1fr)">
-        {Object.keys(themeColors).map(colorName => (
-          <PseudoBox
-            _hover={{ shadow: 'lg' }}
-            bg={`${colorName}.${props.enableHues ? hue : 500}`}
-            border={colorName.includes('white') ? '1px solid lightgrey' : ''}
-            cursor="pointer"
-            height="30px"
-            key={colorName}
-            mt={2}
-            onClick={() =>
-              setValue(
-                props.name,
-                props.enableHues ? `${colorName}.${hue}` : colorName,
-              )
-            }
-            rounded="full"
-            width="30px"
-          />
-        ))}
+      <Grid gap={0} mb={2} templateColumns="repeat(10, 1fr)">
+        {Object.entries(colorsNew).map(([key, value]) => {
+          if (key === 'product') return null
+          return Object.entries(
+            value as object,
+          ).map(([colorKey, colorValue]) => (
+            <PseudoBox
+              _hover={{ shadow: 'lg' }}
+              bg={colorValue}
+              border={colorKey.includes('white') ? '1px solid lightgrey' : ''}
+              cursor="pointer"
+              height="30px"
+              key={colorKey}
+              mt={2}
+              onClick={() => setValue(props.name, colorValue)}
+              rounded="full"
+              width="30px"
+            />
+          ))
+        })}
       </Grid>
 
       {props.enableHues && (
@@ -102,7 +98,7 @@ const ColorsControl = (props: ColorControlPropsType) => {
 
   return (
     <FormControl label={props.label}>
-      <Popover placement="bottom">
+      <Popover placement="bottom-end" usePortal>
         <PopoverTrigger>
           <IconButton
             aria-label="Color"
@@ -116,7 +112,7 @@ const ColorsControl = (props: ColorControlPropsType) => {
             {props.label}
           </IconButton>
         </PopoverTrigger>
-        <PopoverContent width="200px" zIndex={theme.zIndices.modal}>
+        <PopoverContent zIndex={99999}>
           <PopoverArrow />
           <PopoverBody>
             {props.withFullColor ? (
@@ -158,4 +154,14 @@ const ColorsControl = (props: ColorControlPropsType) => {
   )
 }
 
-export default memo(ColorsControl)
+const ThemedControl = withTheme(ColorsControl)
+
+const ThemedColorsControl = (props: ColorControlPropsType) => {
+  return (
+    <ThemeProvider>
+      <ThemedControl {...props} />
+    </ThemeProvider>
+  )
+}
+
+export default memo(ThemedColorsControl)

@@ -31,15 +31,15 @@ const TextPanel = () => {
     <>
       <FormControl label="Style">
         <IconButton
-          mr={1}
           aria-label="bold"
           icon={GoBold}
+          mr={1}
           onClick={() => {
             setValue('fontWeight', fontWeight ? null : 'bold')
           }}
           size="xs"
-          variantColor={fontWeight ? 'whatsapp' : 'gray'}
           variant={fontWeight ? 'solid' : 'outline'}
+          variantColor={fontWeight ? 'whatsapp' : 'gray'}
         >
           Bold
         </IconButton>
@@ -50,23 +50,23 @@ const TextPanel = () => {
             setValue('fontStyle', fontStyle === 'italic' ? null : 'italic')
           }}
           size="xs"
-          variantColor={fontStyle === 'italic' ? 'whatsapp' : 'gray'}
           variant={fontStyle === 'italic' ? 'solid' : 'outline'}
+          variantColor={fontStyle === 'italic' ? 'whatsapp' : 'gray'}
         >
           Italic
         </IconButton>
       </FormControl>
 
       <FormControl label="Text align">
-        <ButtonGroup size="xs" isAttached>
+        <ButtonGroup isAttached size="xs">
           <IconButton
             aria-label="bold"
             icon={MdFormatAlignLeft}
             onClick={() => {
               setValue('textAlign', 'left')
             }}
-            variantColor={textAlign === 'left' ? 'whatsapp' : 'gray'}
             variant={textAlign === 'left' ? 'solid' : 'outline'}
+            variantColor={textAlign === 'left' ? 'whatsapp' : 'gray'}
           />
 
           <IconButton
@@ -75,8 +75,8 @@ const TextPanel = () => {
             onClick={() => {
               setValue('textAlign', 'center')
             }}
-            variantColor={textAlign === 'center' ? 'whatsapp' : 'gray'}
             variant={textAlign === 'center' ? 'solid' : 'outline'}
+            variantColor={textAlign === 'center' ? 'whatsapp' : 'gray'}
           />
 
           <IconButton
@@ -85,8 +85,8 @@ const TextPanel = () => {
             onClick={() => {
               setValue('textAlign', 'right')
             }}
-            variantColor={textAlign === 'right' ? 'whatsapp' : 'gray'}
             variant={textAlign === 'right' ? 'solid' : 'outline'}
+            variantColor={textAlign === 'right' ? 'whatsapp' : 'gray'}
           />
 
           <IconButton
@@ -95,17 +95,17 @@ const TextPanel = () => {
             onClick={() => {
               setValue('textAlign', 'justify')
             }}
-            variantColor={textAlign === 'justify' ? 'whatsapp' : 'gray'}
             variant={textAlign === 'justify' ? 'solid' : 'outline'}
+            variantColor={textAlign === 'justify' ? 'whatsapp' : 'gray'}
           />
         </ButtonGroup>
       </FormControl>
 
-      <FormControl label="Font size" htmlFor="fontSize">
+      <FormControl htmlFor="fontSize" label="Font size">
         <InputSuggestion
-          value={fontSize}
           handleChange={setValueFromEvent}
           name="fontSize"
+          value={fontSize}
         >
           {Object.keys(theme.fontSizes).map(option => (
             <ComboboxOption key={option} value={option} />
@@ -113,13 +113,13 @@ const TextPanel = () => {
         </InputSuggestion>
       </FormControl>
 
-      <ColorsControl withFullColor enableHues name="color" label="Color" />
+      <ColorsControl label="Color" name="color" withFullColor />
 
-      <FormControl label="Line height" htmlFor="lineHeight">
+      <FormControl htmlFor="lineHeight" label="Line height">
         <InputSuggestion
-          value={lineHeight}
           handleChange={setValueFromEvent}
           name="lineHeight"
+          value={lineHeight}
         >
           {Object.keys(theme.lineHeights).map(option => (
             <ComboboxOption key={option} value={option} />
@@ -127,11 +127,11 @@ const TextPanel = () => {
         </InputSuggestion>
       </FormControl>
 
-      <FormControl label="Letter spacing" htmlFor="letterSpacing">
+      <FormControl htmlFor="letterSpacing" label="Letter spacing">
         <InputSuggestion
-          value={letterSpacing}
           handleChange={setValueFromEvent}
           name="letterSpacing"
+          value={letterSpacing}
         >
           {Object.keys(theme.letterSpacings).map(option => (
             <ComboboxOption key={option} value={option} />
