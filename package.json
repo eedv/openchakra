@@ -5,7 +5,7 @@
   "dependencies": {
     "@bugsnag/js": "^6.5.2",
     "@bugsnag/plugin-react": "^6.5.0",
-    "@chakra-ui/core": "^0.5.2",
+    "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@increase/typed-components": "3.0.2",
