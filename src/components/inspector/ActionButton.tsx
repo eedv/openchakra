@@ -26,15 +26,15 @@ const ActionButton: React.FC<Props> = ({
   ...props
 }) => {
   return (
-    <Tooltip hasArrow aria-label={label} label={label} zIndex={11} {...props}>
+    <Tooltip aria-label={label} hasArrow label={label} zIndex={11} {...props}>
       <IconButton
-        size="xs"
-        variant="ghost"
+        aria-label={label}
         as={as}
+        icon={icon}
         isLoading={isLoading}
         onClick={onClick}
-        icon={icon}
-        aria-label={label}
+        size="sm"
+        variant="ghost"
         variantColor={variantColor}
       />
     </Tooltip>

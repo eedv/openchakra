@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { useRef } from 'react'
 import { XYCoord, useDrop, DragObjectWithType, useDrag } from 'react-dnd'
 import ElementListItem from './ElementListItem'
@@ -6,6 +7,7 @@ interface Props extends Pick<IComponent, 'type' | 'id'> {
   index: number
   moveItem?: (dragIndex: number, hoverIndex: number) => void
   onSelect: (id: IComponent['id']) => void
+  onDuplicate: (id: IComponent['id']) => void
   onHover: (id: IComponent['id']) => void
   onUnhover: () => void
 }
@@ -16,6 +18,7 @@ const ElementListItemDraggable: React.FC<Props> = ({
   type,
   id,
   onSelect,
+  onDuplicate,
   moveItem,
   index,
   onHover,
@@ -67,19 +70,24 @@ const ElementListItemDraggable: React.FC<Props> = ({
     onSelect(id)
   }
 
+  const onDuplicateElement = () => {
+    onDuplicate(id)
+  }
+
   const onMouseOver = () => {
     onHover(id)
   }
 
   return (
     <ElementListItem
-      ref={ref}
+      draggable
+      onDuplicate={onDuplicateElement}
+      onMouseOut={onUnhover}
+      onMouseOver={onMouseOver}
       onSelect={onSelectElement}
       opacity={opacity}
-      onMouseOver={onMouseOver}
-      onMouseOut={onUnhover}
+      ref={ref}
       type={type}
-      draggable
     />
   )
 }

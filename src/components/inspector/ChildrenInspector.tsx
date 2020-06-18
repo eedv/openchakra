@@ -19,6 +19,10 @@ const ChildrenInspector = () => {
     dispatch.components.select(id)
   }
 
+  const onDuplicateChild = (id: IComponent['id']) => {
+    dispatch.components.duplicate(id)
+  }
+
   const onHoverChild = (id: IComponent['id']) => {
     dispatch.components.hover(id)
   }
@@ -31,8 +35,9 @@ const ChildrenInspector = () => {
     <ElementsList
       elements={childrenComponent}
       moveItem={moveChildren}
-      onSelect={onSelectChild}
+      onDuplicate={onDuplicateChild}
       onHover={onHoverChild}
+      onSelect={onSelectChild}
       onUnhover={onUnhoverChild}
     />
   )

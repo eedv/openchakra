@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { getSelectedComponentParent } from '../../core/selectors/components'
@@ -22,10 +23,10 @@ const ParentInspector = () => {
 
   return (
     <ElementListItem
-      type={parentComponent.type}
-      onMouseOver={onHover}
       onMouseOut={onUnhover}
+      onMouseOver={onHover}
       onSelect={onSelect}
+      type={parentComponent.type}
     />
   )
 }

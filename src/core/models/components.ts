@@ -204,9 +204,13 @@ const components = createModel({
         selectedId: state.components[selectedComponent.parent].id,
       }
     },
-    duplicate(state: ComponentsState): ComponentsState {
+    duplicate(
+      state: ComponentsState,
+      selectedId?: IComponent['id'],
+    ): ComponentsState {
       return produce(state, (draftState: ComponentsState) => {
-        const selectedComponent = draftState.components[draftState.selectedId]
+        const selectedComponent =
+          draftState.components[selectedId || draftState.selectedId]
 
         if (selectedComponent.id !== DEFAULT_ID) {
           const parentElement = draftState.components[selectedComponent.parent]

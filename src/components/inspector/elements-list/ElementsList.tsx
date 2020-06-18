@@ -6,6 +6,7 @@ interface Props {
   elements: IComponent[]
   moveItem: (fromIndex: number, toIndex: number) => void
   onSelect: (id: IComponent['id']) => void
+  onDuplicate: (id: IComponent['id']) => void
   onHover: (id: IComponent['id']) => void
   onUnhover: () => void
 }
@@ -14,6 +15,7 @@ const ElementsList: React.FC<Props> = ({
   elements,
   moveItem,
   onSelect,
+  onDuplicate,
   onHover,
   onUnhover,
 }) => {
@@ -23,14 +25,15 @@ const ElementsList: React.FC<Props> = ({
         (element, index) =>
           element && (
             <ElementListItem
-              key={element.id}
-              type={element.type}
-              index={index}
-              moveItem={moveItem}
               id={element.id}
-              onSelect={onSelect}
+              index={index}
+              key={element.id}
+              moveItem={moveItem}
+              onDuplicate={onDuplicate}
               onHover={onHover}
+              onSelect={onSelect}
               onUnhover={onUnhover}
+              type={element.type}
             />
           ),
       )}
