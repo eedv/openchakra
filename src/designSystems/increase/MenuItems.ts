@@ -154,6 +154,18 @@ export const presetsList: Preset[] = [
       },
     ],
   },
+  {
+    type: 'SelectPreset',
+    mainComponentType: 'Select',
+    children: [
+      {
+        type: 'SelectOption',
+      },
+      {
+        type: 'SelectOption',
+      },
+    ],
+  },
 ]
 
 export const getComponentDefinition = (type: ComponentType) => {

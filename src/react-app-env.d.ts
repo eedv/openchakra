@@ -40,7 +40,7 @@ type ComponentType =
   | 'Th'
   | 'Pagination'
 
-type PresetType = 'StepperPreset' | 'MegaDiv' | 'TablePreset'
+type PresetType = 'StepperPreset' | 'SelectPreset' | 'TablePreset'
 type seriablizableObject = {
   [key: string]:
     | string
